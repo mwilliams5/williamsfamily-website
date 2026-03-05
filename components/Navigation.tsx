@@ -11,7 +11,6 @@ const navLinks = [
   { href: "/gallery", label: "Gallery" },
   { href: "/updates", label: "Updates" },
   { href: "/robert-williams", label: "Robert R. Williams" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navigation() {

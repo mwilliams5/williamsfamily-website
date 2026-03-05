@@ -30,8 +30,8 @@ const birthAnnouncements = [
 const reunionUpdates = [
   {
     year: "2006",
-    title: "Reunion 2006 – Planning Announced!",
-    body: "Plans are underway for the Williams Family Reunion 2006. Stay tuned for details on location, dates, and activities. We hope to see everyone there!",
+    title: "Reunion 2006 – A Great Time Had by All!",
+    body: "The Williams Family Reunion 2006 was a wonderful occasion, bringing together family members from across the country for good food, great stories, and cherished memories.",
   },
   {
     year: "2001",

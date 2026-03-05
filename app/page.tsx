@@ -24,14 +24,6 @@ const highlights = [
     href: "/gallery",
     linkText: "View Photos",
   },
-  {
-    icon: "✉️",
-    title: "Get in Touch",
-    description:
-      "Have a question or want to share something? Reach out and we'll get back to you.",
-    href: "/contact",
-    linkText: "Contact Us",
-  },
 ];
 
 export default function HomePage() {
@@ -102,7 +94,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <h2 className="section-heading text-center">Explore</h2>
           <div className="section-divider mx-auto mb-10"></div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
             {highlights.map((item) => (
               <div key={item.href} className="card p-8 text-center flex flex-col items-center">
                 <span className="text-5xl mb-4">{item.icon}</span>

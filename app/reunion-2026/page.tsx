@@ -10,7 +10,6 @@ const details = [
   { icon: "📅", label: "Date", value: "Friday, July 17, 2026" },
   { icon: "📍", label: "Location", value: "Rock Hill, South Carolina" },
   { icon: "👨‍👩‍👧‍👦", label: "Who", value: "All Williams family members & families" },
-  { icon: "✉️", label: "RSVP / Questions", value: "family@williamsfamily.org" },
 ];
 
 export default function Reunion2026Page() {
@@ -68,16 +67,11 @@ export default function Reunion2026Page() {
         <h2 className="text-2xl font-serif font-bold text-primary-800 mb-3">
           We Can&apos;t Wait to See You!
         </h2>
-        <p className="text-gray-600 max-w-xl mx-auto leading-relaxed mb-6">
+        <p className="text-gray-600 max-w-xl mx-auto leading-relaxed">
           The Williams Family Reunion is always a highlight of the year — great
           food, great stories, and even better company. Mark your calendar for
           <strong> July 17, 2026</strong> in Rock Hill, SC and start making
           travel plans!
-        </p>
-        <p className="text-gray-600 max-w-xl mx-auto leading-relaxed">
-          More details on venue, schedule, and activities will be posted here as
-          the date approaches. In the meantime, reach out to the family with any
-          questions.
         </p>
       </section>
 
