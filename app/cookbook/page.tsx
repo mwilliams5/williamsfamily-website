@@ -1,235 +1,127 @@
 import type { Metadata } from "next";
+import { cookbook } from "@/lib/cookbookData";
+import PrintRecipeButton from "@/components/PrintRecipeButton";
+import RandomRecipePicker from "@/components/RandomRecipePicker";
 
 export const metadata: Metadata = {
   title: "Williams Cook Book",
   description: "The Williams Family Cook Book — cherished recipes passed down through generations.",
 };
 
-const categories = [
-  {
-    name: "Desserts, Sweets & Cookies",
-    emoji: "🍰",
-    recipes: [
-      "Joanie's Chocolate Mousse",
-      "The Next Best Thing to Robert Redford",
-      "Cherry Delight",
-      "Betty's Strawberry Cake",
-      "Peanut Butter Magic Cookies",
-      "No Bake Holiday Orange Balls",
-      "Fruitcake Cookies",
-      "Seven Layer Cookies",
-      "Susan & Christi's Favorite Cookies",
-      "Snowballs",
-      "Buckeyes",
-      "Chocolate Crinkles",
-      "Toffee Bars",
-      "Libby's Pecan Pie",
-      "Libby's Mini Cheese Cakes",
-      "Linda's Fruit Compote",
-      "Chocolate Chip Cookies – Chewy",
-      "Chocolate Chip Cookies – Puffy",
-      "Chocolate Chip Cookies – Thin",
-      "Sour Cream Coffee Cake",
-      "Pumpkin Gooey Butter Cake",
-      "Nutty Fingers",
-    ],
-  },
-  {
-    name: "Appetizers & Dips",
-    emoji: "🫙",
-    recipes: [
-      "Boiled Peanuts",
-      "Cayenne Pecans",
-      "Nacho Cheese Dip",
-      "Rob's & Trish's Curry Dip",
-      "Vegetable Dip",
-      "Vegetable Dip II",
-      "Schapiro's Mexi-Chile Dip",
-      "Pepper Jelly",
-      "Meatballs",
-      "Barbeque Weinnies",
-      "Ham Delights",
-      "Hot Artichoke Dip",
-      "Cucumber Ring Supreme",
-      "Trash – Chex Mix",
-      "Spiced Pumpkin Seeds",
-    ],
-  },
-  {
-    name: "Vegetables & Casseroles",
-    emoji: "🥘",
-    recipes: [
-      "Rob & Trish's Sour Cream Corn",
-      "Hashed Brown Potato Casserole",
-      "Barbara & Ric's Green Bean Casserole",
-      "Green Bean Parmesan",
-      "Sweet and Sour Green Beans",
-      "Broccoli Casserole with Cheese",
-      "Broccoli Casserole with Cheese II",
-      "Squash Casserole (Ole Timey)",
-      "Squash Casserole (Quick)",
-      "Asparagus/Pea Casserole",
-      "Ratatouille",
-      "Marinated Vegetables",
-      "Overnite Slaw",
-      "Rice Casserole",
-      "Sausage Casserole",
-      "Aunt Judy's Casserole",
-      "Fideo Chicken",
-      "Heart Attack Potatoes",
-      "Sweet Potato Soufflé",
-    ],
-  },
-  {
-    name: "Breads",
-    emoji: "🍞",
-    recipes: [
-      "Sourdough Bread",
-      "Linda's Angel Biscuits",
-      "Mrs. Ledbetter's Monkey Bread",
-      "Linda's Carolina Cornbread",
-      "Butterhorn Rolls",
-    ],
-  },
-  {
-    name: "Meats",
-    emoji: "🍗",
-    recipes: [
-      "Koji's Favorite Chicken Wings",
-      "Abba Eban Chicken",
-      "Priss's Marinated Pork Loin",
-      "Tarragon Chicken",
-      "Curried Chicken Salad",
-    ],
-  },
-  {
-    name: "Soups",
-    emoji: "🍲",
-    recipes: [
-      "French Onion Soup",
-      "Pookie's Christmas Mushroom Soup",
-      "Hamburger/Vegetable Soup",
-      "Navy Bean Soup",
-    ],
-  },
-];
-
-// Featured recipe from the 2001 Reunion
-const featuredRecipe = {
-  title: "Peach Cobbler",
-  subtitle: "As seen at the Williams Family Reunion 2001",
-  ingredients: [
-    "At least 5 medium to large yellow peaches",
-    "2 sticks of butter",
-    "1 teaspoon lemon juice",
-    "1 tablespoon cinnamon",
-    "Sugar (to taste)",
-    "1 box Duncan Hines Real Butter Cake Mix",
-    "Vanilla ice cream, to serve",
-  ],
-  instructions: [
-    "Peel and slice peaches, place in a bowl and cover generously with sugar. Cover and allow to sit until they release their juices.",
-    "Transfer the peach mixture to a pot, then add lemon juice, cinnamon, and one stick of butter. Simmer for 15–20 minutes until peaches are tender but not mushy.",
-    "Pour the cooked peach mixture into a 9×13 inch cake pan.",
-    "Sprinkle the cake mix evenly over the peach mixture. Crush any chunks with your hands or a fork.",
-    "Melt the remaining stick of butter and drizzle it evenly over the cake mix.",
-    "Bake in a preheated 350°F oven for 30–60 minutes until browned to your preference.",
-    "Serve à la mode with vanilla ice cream.",
-  ],
-  note: "Adjust sugar and cinnamon to your personal taste. Baking time can extend to an hour or longer depending on batch size.",
-};
-
 export default function CookbookPage() {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-16">
+    <div className="max-w-5xl mx-auto px-4 py-16">
       {/* Header */}
-      <div className="mb-12">
+      <div className="mb-8">
         <h1 className="section-heading">Williams Cook Book</h1>
         <div className="section-divider"></div>
-        <p className="text-lg text-gray-600 max-w-2xl">
+        <p className="text-lg text-gray-600 max-w-2xl mb-6">
           A collection of cherished recipes from Williams family members across
           the generations. From holiday favorites to reunion classics — enjoy!
         </p>
+        {/* Random Recipe Picker */}
+        <RandomRecipePicker />
       </div>
 
-      {/* Featured Recipe */}
-      <section className="mb-16 bg-warm-50 border border-warm-200 rounded-2xl p-8 md:p-10">
-        <div className="flex items-center gap-3 mb-1">
-          <span className="text-3xl">⭐</span>
-          <h2 className="text-2xl font-serif font-bold text-primary-800">
-            {featuredRecipe.title}
-          </h2>
-        </div>
-        <p className="text-sm font-semibold text-warm-600 mb-6 ml-10">
-          {featuredRecipe.subtitle}
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          <div>
-            <h3 className="font-semibold text-gray-800 mb-3 uppercase tracking-wide text-sm">
-              Ingredients
-            </h3>
-            <ul className="space-y-1.5">
-              {featuredRecipe.ingredients.map((ing) => (
-                <li key={ing} className="flex items-start gap-2 text-gray-700">
-                  <span className="text-warm-500 mt-0.5">•</span>
-                  {ing}
-                </li>
-              ))}
-            </ul>
+      {/* Recipe sections */}
+      {cookbook.map((section) => (
+        <section key={section.category} className="mb-14">
+          {/* Category heading */}
+          <div className="flex items-center gap-3 mb-6 border-b-2 border-primary-100 pb-3">
+            <span className="text-3xl">{section.emoji}</span>
+            <h2 className="text-2xl font-serif font-bold text-primary-800">
+              {section.category}
+            </h2>
+            <span className="ml-auto text-sm text-gray-400 font-medium">
+              {section.recipes.length} recipes
+            </span>
           </div>
 
-          <div>
-            <h3 className="font-semibold text-gray-800 mb-3 uppercase tracking-wide text-sm">
-              Instructions
-            </h3>
-            <ol className="space-y-2">
-              {featuredRecipe.instructions.map((step, i) => (
-                <li key={i} className="flex gap-3 text-gray-700 text-sm">
-                  <span className="font-bold text-primary-600 shrink-0">
-                    {i + 1}.
+          {/* Recipes as expandable details */}
+          <div className="space-y-3">
+            {section.recipes.map((recipe) => (
+              <details
+                key={recipe.name}
+                className="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-primary-300 transition-colors"
+              >
+                <summary className="flex items-center justify-between gap-3 px-5 py-4 cursor-pointer list-none select-none hover:bg-gray-50 transition-colors">
+                  <div className="flex items-center gap-3">
+                    <span className="text-primary-400 font-bold text-lg group-open:rotate-90 transition-transform duration-200 inline-block">
+                      ›
+                    </span>
+                    <div>
+                      <span className="font-serif font-bold text-gray-800 text-base">
+                        {recipe.name}
+                      </span>
+                      {recipe.note && (
+                        <span className="ml-2 text-xs italic text-gray-400">
+                          — {recipe.note}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <span className="text-xs text-gray-400 shrink-0 hidden sm:block">
+                    {recipe.ingredients.filter(
+                      (i) => !(i.startsWith("—") && i.endsWith("—"))
+                    ).length}{" "}
+                    ingredients
                   </span>
-                  {step}
-                </li>
-              ))}
-            </ol>
-            <p className="mt-4 text-xs italic text-gray-500 border-t border-warm-200 pt-3">
-              💡 {featuredRecipe.note}
-            </p>
-          </div>
-        </div>
-      </section>
+                </summary>
 
-      {/* Recipe Index by Category */}
-      <h2 className="text-2xl font-serif font-bold text-primary-800 mb-8">
-        Recipe Index
-      </h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {categories.map((cat) => (
-          <div key={cat.name} className="card p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-2xl">{cat.emoji}</span>
-              <h3 className="font-serif font-bold text-primary-800 text-base leading-tight">
-                {cat.name}
-              </h3>
-            </div>
-            <ul className="space-y-1.5">
-              {cat.recipes.map((recipe) => (
-                <li
-                  key={recipe}
-                  className="text-sm text-gray-700 flex items-start gap-2"
-                >
-                  <span className="text-primary-300 mt-0.5 shrink-0">›</span>
-                  {recipe}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+                {/* Expanded recipe content */}
+                <div className="px-5 pb-6 pt-2 border-t border-gray-100">
+                  <div className="grid md:grid-cols-2 gap-6 mt-4">
+                    {/* Ingredients */}
+                    <div>
+                      <h3 className="text-xs font-bold uppercase tracking-widest text-warm-600 mb-3">
+                        Ingredients
+                      </h3>
+                      <ul className="space-y-1.5">
+                        {recipe.ingredients.map((ing, i) =>
+                          ing.startsWith("—") && ing.endsWith("—") ? (
+                            <li
+                              key={i}
+                              className="text-xs font-bold italic text-gray-500 pt-2"
+                            >
+                              {ing}
+                            </li>
+                          ) : (
+                            <li
+                              key={i}
+                              className="flex gap-2 text-sm text-gray-700"
+                            >
+                              <span className="text-warm-400 shrink-0 mt-0.5">•</span>
+                              {ing}
+                            </li>
+                          )
+                        )}
+                      </ul>
+                    </div>
 
-      <p className="text-xs text-gray-400 mt-10 text-center">
-        Cookbook last updated: January 30, 2000
+                    {/* Instructions */}
+                    <div>
+                      <h3 className="text-xs font-bold uppercase tracking-widest text-warm-600 mb-3">
+                        Instructions
+                      </h3>
+                      <p className="text-sm text-gray-700 leading-relaxed">
+                        {recipe.instructions}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Print button */}
+                  <div className="mt-5 pt-4 border-t border-gray-100">
+                    <PrintRecipeButton recipe={recipe} />
+                  </div>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <p className="text-xs text-gray-400 text-center mt-4">
+        Original cookbook last updated: January 30, 2000
       </p>
     </div>
   );

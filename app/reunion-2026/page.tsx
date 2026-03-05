@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import CountdownTimer from "@/components/CountdownTimer";
 
 export const metadata: Metadata = {
   title: "Reunion 2026",
@@ -27,6 +28,11 @@ export default function Reunion2026Page() {
           July 17, 2026 &nbsp;·&nbsp; Rock Hill, SC
         </p>
       </div>
+
+      {/* Live Countdown */}
+      <section className="bg-primary-900 rounded-2xl p-8 text-white text-center mb-10">
+        <CountdownTimer />
+      </section>
 
       {/* Details cards */}
       <section className="grid sm:grid-cols-2 gap-4 mb-14">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import CountdownTimer from "@/components/CountdownTimer";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -43,19 +44,20 @@ export default function HomePage() {
         </Link>
       </section>
 
-      {/* Reunion 2026 Banner */}
-      <section className="bg-warm-500 text-gray-900 py-10 px-4">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      {/* Reunion 2026 Banner with Countdown */}
+      <section className="bg-primary-900 text-white py-10 px-4">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest mb-1 opacity-70">Save the Date</p>
-            <h2 className="text-3xl font-serif font-bold">Williams Family Reunion 2026</h2>
-            <p className="text-lg mt-1 opacity-80">July 17, 2026 &nbsp;·&nbsp; Rock Hill, SC</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-primary-300 mb-1">Save the Date</p>
+            <h2 className="text-2xl md:text-3xl font-serif font-bold">Williams Family Reunion 2026</h2>
+            <p className="text-primary-200 mt-1">July 17, 2026 &nbsp;·&nbsp; Rock Hill, SC</p>
           </div>
+          <CountdownTimer />
           <Link
             href="/reunion-2026"
-            className="shrink-0 bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors"
+            className="inline-block bg-warm-500 hover:bg-warm-600 text-gray-900 font-bold px-6 py-3 rounded-lg transition-colors"
           >
-            Learn More →
+            Reunion Details →
           </Link>
         </div>
       </section>
