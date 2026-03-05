@@ -9,6 +9,7 @@ const navLinks = [
   { href: "/reunions", label: "Reunions 🎉" },
   { href: "/cookbook", label: "Cook Book" },
   { href: "/gallery", label: "Gallery" },
+  { href: "/memories", label: "Memories" },
   { href: "/updates", label: "Updates" },
   { href: "/robert-williams", label: "Robert R. Williams" },
 ];
@@ -18,10 +19,12 @@ export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Treat any /reunion-* path as active for the Reunions nav link
-  const isActive = (href: string) =>
-    href === "/reunions"
-      ? pathname === "/reunions" || pathname.startsWith("/reunion-")
-      : pathname === href;
+  // Treat /share-a-memory as active for the Memories nav link
+  const isActive = (href: string) => {
+    if (href === "/reunions") return pathname === "/reunions" || pathname.startsWith("/reunion-");
+    if (href === "/memories") return pathname === "/memories" || pathname === "/share-a-memory";
+    return pathname === href;
+  };
 
   return (
     <header className="bg-primary-800 text-white shadow-lg">
