@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 };
 
 const photos = [
+  "FB_IMG_1626092991816.jpg",   // black & white — hero
   "20210703_223451.jpg",
   "20210704_120333.jpg",
   "20210704_124814.jpg",
@@ -28,10 +29,8 @@ const photos = [
   "FB_IMG_1626092503922.jpg",
   "FB_IMG_1626092516973.jpg",
   "FB_IMG_1626092627981.jpg",
-  "FB_IMG_1626092991816.jpg",
   "FullSizeR47.jpg",
   "FullSizeR48.jpg",
-  "imagejpeg_0132.jpg",
   "IMG_3056.jpg",
 ];
 
