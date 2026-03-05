@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -8,12 +9,12 @@ export const metadata: Metadata = {
 
 const highlights = [
   {
-    icon: "👨‍👩‍👧‍👦",
-    title: "Our Family",
+    icon: "📖",
+    title: "Cook Book",
     description:
-      "Meet the Williams family — our history, our members, and the stories that bring us together.",
-    href: "/about",
-    linkText: "Meet Us",
+      "Browse our treasured family recipes — from reunion classics to holiday favorites passed down through generations.",
+    href: "/cookbook",
+    linkText: "View Recipes",
   },
   {
     icon: "📸",
@@ -45,9 +46,26 @@ export default function HomePage() {
           Family is everything. Welcome to our corner of the internet — a place
           to share, remember, and stay connected.
         </p>
-        <Link href="/about" className="btn-primary bg-warm-500 hover:bg-warm-600 text-gray-900 font-semibold">
-          Meet Our Family
+        <Link href="/reunion-2026" className="btn-primary bg-warm-500 hover:bg-warm-600 text-gray-900 font-semibold">
+          🎉 Reunion 2026 Info
         </Link>
+      </section>
+
+      {/* Reunion 2026 Banner */}
+      <section className="bg-warm-500 text-gray-900 py-10 px-4">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest mb-1 opacity-70">Save the Date</p>
+            <h2 className="text-3xl font-serif font-bold">Williams Family Reunion 2026</h2>
+            <p className="text-lg mt-1 opacity-80">July 17, 2026 &nbsp;·&nbsp; Rock Hill, SC</p>
+          </div>
+          <Link
+            href="/reunion-2026"
+            className="shrink-0 bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors"
+          >
+            Learn More →
+          </Link>
+        </div>
       </section>
 
       {/* Welcome message */}
@@ -60,6 +78,23 @@ export default function HomePage() {
           you&apos;re planning the next reunion or just catching up, you&apos;ll
           find everything here. We hope you feel right at home.
         </p>
+      </section>
+
+      {/* Family photo */}
+      <section className="max-w-4xl mx-auto px-4 pb-10">
+        <div className="rounded-2xl overflow-hidden shadow-lg">
+          <Image
+            src="/photos/reunion-group.jpg"
+            alt="The Williams Family at the Reunion"
+            width={900}
+            height={500}
+            className="w-full object-cover"
+            priority
+          />
+          <p className="text-center text-sm text-gray-500 italic py-3 bg-white">
+            All of Us! — Williams Family Reunion 2001
+          </p>
+        </div>
       </section>
 
       {/* Highlights grid */}
@@ -84,7 +119,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Recent news placeholder */}
+      {/* Latest News */}
       <section className="max-w-3xl mx-auto px-4 py-16">
         <h2 className="section-heading">Latest News</h2>
         <div className="section-divider"></div>
@@ -93,12 +128,12 @@ export default function HomePage() {
             {
               date: "March 2026",
               title: "Website Relaunched!",
-              body: "We&apos;ve moved to a new, faster website. More updates coming soon!",
+              body: "We've moved to a new, faster website. More updates and photos coming soon!",
             },
             {
-              date: "Summer 2025",
-              title: "Annual Family Reunion",
-              body: "A wonderful time was had by all at this year&apos;s reunion. Photos are in the gallery.",
+              date: "March 2026",
+              title: "Reunion 2026 Announced",
+              body: "Mark your calendars — the Williams Family Reunion is happening on July 17, 2026 in Rock Hill, SC. We hope to see everyone there!",
             },
           ].map((post) => (
             <div key={post.title} className="border-l-4 border-primary-500 pl-5">
@@ -108,10 +143,7 @@ export default function HomePage() {
               <h3 className="text-lg font-serif font-bold text-gray-800 mb-1">
                 {post.title}
               </h3>
-              <p
-                className="text-gray-600"
-                dangerouslySetInnerHTML={{ __html: post.body }}
-              />
+              <p className="text-gray-600">{post.body}</p>
             </div>
           ))}
         </div>
