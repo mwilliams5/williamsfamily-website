@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   description: "The Williams Family Cook Book — cherished recipes passed down through generations.",
 };
 
+// Convert a category name to a URL-friendly anchor id
+function toId(category: string) {
+  return category.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
 export default function CookbookPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-16">
@@ -23,9 +28,31 @@ export default function CookbookPage() {
         <RandomRecipePicker />
       </div>
 
+      {/* Sticky section navigation */}
+      <nav
+        aria-label="Cookbook sections"
+        className="sticky top-[65px] z-30 -mx-4 px-4 py-3 mb-10 bg-white/95 backdrop-blur border-y border-gray-200 shadow-sm"
+      >
+        <div className="flex flex-wrap gap-2">
+          {cookbook.map((section) => (
+            <a
+              key={section.category}
+              href={`#${toId(section.category)}`}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold bg-primary-50 text-primary-700 hover:bg-primary-100 hover:text-primary-900 border border-primary-100 hover:border-primary-300 transition-all"
+            >
+              <span>{section.emoji}</span>
+              <span>{section.category.split(/[,&]/)[0].trim()}</span>
+              <span className="text-xs font-normal text-primary-400">
+                ({section.recipes.length})
+              </span>
+            </a>
+          ))}
+        </div>
+      </nav>
+
       {/* Recipe sections */}
       {cookbook.map((section) => (
-        <section key={section.category} className="mb-14">
+        <section key={section.category} id={toId(section.category)} className="mb-14 scroll-mt-36">
           {/* Category heading */}
           <div className="flex items-center gap-3 mb-6 border-b-2 border-primary-100 pb-3">
             <span className="text-3xl">{section.emoji}</span>
