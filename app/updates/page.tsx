@@ -1,21 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { christmasLetters } from "@/lib/christmasLettersData";
 
 export const metadata: Metadata = {
   title: "Family Updates",
   description: "News, birth announcements, Christmas letters, and family updates from the Williams family.",
 };
-
-const christmasLetters = [
-  { year: 2006, title: "Mary & Jake's Christmas Extravaganza!", author: "Mary & Jake" },
-  { year: 2005, title: "Flindt Family Christmas Letter", author: "Flindt Family" },
-  { year: 2005, title: "Damian Williams and Family Christmas Letter", author: "Damian Williams & Family" },
-  { year: 2004, title: "McDevitt Christmas Letter", author: "McDevitt Family" },
-  { year: 2004, title: "Damian Williams and Family Christmas Letter", author: "Damian Williams & Family" },
-  { year: 2003, title: "Damian Williams and Family Christmas Letter", author: "Damian Williams & Family" },
-  { year: 2003, title: "McDevitt Christmas Letter", author: "McDevitt Family" },
-  { year: 2002, title: "Damian Williams and Family Christmas Letter", author: "Damian Williams & Family" },
-  { year: 2001, title: "Damian Williams and Family Christmas Letter", author: "Damian Williams & Family" },
-];
 
 const birthAnnouncements = [
   { name: "Ariana Grace Malayna Williams", date: "September 2003", parents: "Thomas (Tbone) Williams & family" },
@@ -94,24 +84,30 @@ export default function UpdatesPage() {
       </section>
 
       {/* Christmas Letters */}
-      <section>
+      <section id="christmas-letters">
         <h2 className="text-2xl font-serif font-bold text-primary-800 mb-6 flex items-center gap-2">
           <span>🎄</span> Christmas Letters
         </h2>
         <div className="space-y-3">
-          {christmasLetters.map((letter, i) => (
-            <div
-              key={i}
-              className="flex items-center justify-between bg-white border border-gray-200 rounded-xl px-5 py-4 hover:border-primary-300 hover:shadow-sm transition-all"
+          {christmasLetters.map((letter) => (
+            <Link
+              key={letter.slug}
+              href={`/christmas-letters/${letter.slug}`}
+              className="flex items-center justify-between bg-white border border-gray-200 rounded-xl px-5 py-4 hover:border-primary-300 hover:shadow-sm transition-all group"
             >
               <div>
-                <p className="font-medium text-gray-800">{letter.title}</p>
+                <p className="font-medium text-gray-800 group-hover:text-primary-800 transition-colors">
+                  {letter.title}
+                </p>
                 <p className="text-sm text-gray-500">From: {letter.author}</p>
               </div>
-              <span className="text-sm font-bold text-primary-600 bg-primary-50 px-3 py-1 rounded-full">
-                {letter.year}
-              </span>
-            </div>
+              <div className="flex items-center gap-3 shrink-0">
+                <span className="text-sm font-bold text-primary-600 bg-primary-50 px-3 py-1 rounded-full">
+                  {letter.year}
+                </span>
+                <span className="text-primary-400 group-hover:text-primary-700 transition-colors text-lg">›</span>
+              </div>
+            </Link>
           ))}
         </div>
       </section>
