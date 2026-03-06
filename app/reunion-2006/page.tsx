@@ -16,7 +16,7 @@ export default function Reunion2006Page() {
     .filter((f) => f.match(/\.(jpg|jpeg|png|gif)$/i))
     .sort();
 
-  const heroPhoto = "img_3480.jpg";
+  const heroPhoto = "4th-of-july-and-rock-hill-july-2006-122.jpg";
   const galleryPhotos = allPhotos.filter((p) => p !== heroPhoto);
 
   return (
@@ -47,7 +47,7 @@ export default function Reunion2006Page() {
           horse rides, and a stepping-stone craft that sent every family home with a keepsake cast
           in concrete. The kids staged impromptu performances by the fireplace, evenings wound down
           over card games in the parlor, and a &ldquo;Proposed Site of a Hog Farm&rdquo; yard sign
-          — planted as a prank — drew laughs from everyone who spotted it.
+          drew laughs from everyone who spotted it.
         </p>
       </div>
 
