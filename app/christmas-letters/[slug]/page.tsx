@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { christmasLetters, getLetterBySlug } from "@/lib/christmasLettersData";
@@ -68,6 +69,36 @@ export default function ChristmasLetterPage({ params }: Props) {
           </div>
         )}
       </article>
+
+      {/* Photo gallery */}
+      {letter.images && letter.images.length > 0 && (
+        <section className="mt-14">
+          <div className="flex items-center gap-3 mb-6 pb-4 border-b-2 border-primary-100">
+            <span className="text-2xl">📷</span>
+            <h2 className="text-xl font-serif font-bold text-primary-900">
+              Photos from {letter.year}
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            {letter.images.map((img) => (
+              <figure key={img.src} className="group">
+                <div className="relative aspect-square overflow-hidden rounded-xl bg-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                  <Image
+                    src={img.src}
+                    alt={img.caption}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    unoptimized
+                  />
+                </div>
+                <figcaption className="mt-1.5 text-xs text-gray-500 text-center leading-tight px-1">
+                  {img.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Navigation between letters */}
       <div className="mt-12 pt-8 border-t border-gray-200 flex items-center justify-between gap-4 flex-wrap">
