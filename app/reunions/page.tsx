@@ -207,7 +207,7 @@ export default function ReunionsPage() {
                 </div>
                 <div className="mt-5">
                   <Link
-                    href="/updates#reunion-2001"
+                    href="/reunion-2001"
                     className="inline-flex items-center gap-2 text-sm font-semibold text-primary-700 hover:text-primary-900 border border-primary-200 hover:border-primary-400 px-4 py-2 rounded-lg transition-all hover:bg-primary-50"
                   >
                     📖 View Memories
