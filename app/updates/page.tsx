@@ -26,6 +26,13 @@ const reunionUpdates = [
     linkLabel: "View Photos →",
   },
   {
+    year: "2016",
+    title: "Reunion 2016 – Back at the Mansion!",
+    body: "Over eighty family members gathered at the Williams family estate in South Carolina for a weekend of BBQ, lawn games, kids' activities, and that classic big group photo on the mansion steps. Browse the full photo gallery to relive the memories.",
+    link: "/reunion-2016",
+    linkLabel: "View Photos →",
+  },
+  {
     year: "2006",
     title: "Reunion 2006 – A Great Time Had by All!",
     body: "The Williams Family Reunion 2006 was a wonderful occasion, bringing together family members from across the country for good food, great stories, and cherished memories.",
