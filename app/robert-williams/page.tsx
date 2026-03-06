@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Robert R. Williams",
@@ -9,22 +10,22 @@ const eulogies = [
   {
     service: "Burial Service – November 10, 2005",
     entries: [
-      { author: "Heather Marie Williams (#10)", role: "daughter", type: "Letter" },
+      { author: "Heather Marie Williams (#10)", role: "daughter", type: "Letter", slug: "letter-heather" },
     ],
   },
   {
     service: "Funeral Service – November 10, 2005",
     entries: [
-      { author: "Michael Williams (#5)", role: "son", type: "Eulogy" },
-      { author: "Thomas Williams (#6)", role: "son", type: "Eulogy", note: "Notes only — Tom spoke largely from the heart." },
+      { author: "Michael Williams (#5)", role: "son", type: "Eulogy", slug: "eulogy-michael" },
+      { author: "Thomas Williams (#6)", role: "son", type: "Eulogy", slug: "eulogy-thomas", note: "Notes only — Tom spoke largely from the heart." },
     ],
   },
   {
     service: "Rosary Service – November 9, 2005",
     entries: [
-      { author: "Jakob (grandson)", role: "grandson", type: "Letter" },
-      { author: "Mary Elizabeth Williams (#9)", role: "daughter", type: "Eulogy" },
-      { author: "Damian Williams (#4)", role: "son", type: "Eulogy" },
+      { author: "Jakob (grandson)", role: "grandson", type: "Letter", slug: "letter-jakob" },
+      { author: "Mary Elizabeth Williams (#9)", role: "daughter", type: "Eulogy", slug: "eulogy-mary-elizabeth" },
+      { author: "Damian Williams (#4)", role: "son", type: "Eulogy", slug: "eulogy-damian" },
     ],
   },
 ];
@@ -35,6 +36,11 @@ const nicknames = [
   "Santa Claus", "Husband", "Father", "Son", "Brother",
   "Uncle", "Cousin", "Friend", "Loved",
 ];
+
+const typeIcon: Record<string, string> = {
+  Eulogy: "🕊️",
+  Letter: "✉️",
+};
 
 export default function RobertWilliamsPage() {
   return (
@@ -86,24 +92,33 @@ export default function RobertWilliamsPage() {
               <h3 className="text-base font-semibold text-primary-700 mb-4 uppercase tracking-wide">
                 {service.service}
               </h3>
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {service.entries.map((entry) => (
-                  <div
+                  <Link
                     key={entry.author}
-                    className="border-l-4 border-primary-200 pl-4"
+                    href={`/robert-williams/${entry.slug}`}
+                    className="flex items-start gap-4 border-l-4 border-primary-200 pl-4 py-2 rounded-r-lg hover:border-primary-500 hover:bg-primary-50 transition-all group"
                   >
-                    <p className="font-serif font-bold text-gray-800">
-                      {entry.type} by {entry.author}
-                    </p>
-                    <p className="text-sm text-gray-500 capitalize">
-                      {entry.role}
-                    </p>
-                    {entry.note && (
-                      <p className="text-xs italic text-gray-400 mt-1">
-                        {entry.note}
+                    <span className="text-xl mt-0.5 flex-shrink-0">
+                      {typeIcon[entry.type] ?? "📄"}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-serif font-bold text-gray-800 group-hover:text-primary-800 transition-colors">
+                        {entry.type} by {entry.author}
                       </p>
-                    )}
-                  </div>
+                      <p className="text-sm text-gray-500 capitalize">
+                        {entry.role}
+                      </p>
+                      {entry.note && (
+                        <p className="text-xs italic text-gray-400 mt-1">
+                          {entry.note}
+                        </p>
+                      )}
+                    </div>
+                    <span className="text-primary-400 group-hover:text-primary-700 transition-colors text-sm font-semibold flex-shrink-0 mt-0.5">
+                      Read →
+                    </span>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -112,13 +127,22 @@ export default function RobertWilliamsPage() {
       </section>
 
       {/* Poem */}
-      <section className="mt-12 bg-warm-50 border border-warm-200 rounded-2xl p-8 text-center">
-        <h2 className="font-serif font-bold text-primary-800 text-xl mb-4">
-          Poem: If I Knew
-        </h2>
-        <p className="text-gray-600 italic text-sm">
-          Read at the Rosary Service, November 9, 2005
-        </p>
+      <section className="mt-12">
+        <Link
+          href="/robert-williams/poem-if-i-knew"
+          className="block bg-warm-50 border border-warm-200 hover:border-warm-400 hover:bg-warm-100 rounded-2xl p-8 text-center transition-all group"
+        >
+          <div className="text-3xl mb-3">📜</div>
+          <h2 className="font-serif font-bold text-primary-800 text-xl mb-2 group-hover:text-primary-900 transition-colors">
+            Poem: If I Knew
+          </h2>
+          <p className="text-gray-600 italic text-sm mb-4">
+            Read at the Rosary Service, November 9, 2005
+          </p>
+          <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary-700 group-hover:text-primary-900 transition-colors">
+            Read the poem →
+          </span>
+        </Link>
       </section>
 
       {/* Closing */}
