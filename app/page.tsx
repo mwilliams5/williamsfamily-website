@@ -60,6 +60,7 @@ export default function HomePage() {
             <p className="text-xs font-bold uppercase tracking-widest text-primary-300 mb-1">Save the Date</p>
             <h2 className="text-2xl md:text-3xl font-serif font-bold">Williams Family Reunion 2026</h2>
             <p className="text-primary-200 mt-1">July 17, 2026 &nbsp;·&nbsp; Rock Hill, SC</p>
+            <p className="text-primary-300 mt-2 italic text-sm">&ldquo;We&apos;re in this together... because we don&apos;t have a choice&rdquo;</p>
           </div>
           <CountdownTimer />
           <Link
