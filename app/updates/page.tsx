@@ -33,6 +33,13 @@ const reunionUpdates = [
     linkLabel: "View Photos →",
   },
   {
+    year: "2011",
+    title: "Reunion 2011 – Portraits, Twins & ATVs!",
+    body: "The family returned to the South Carolina mansion in July 2011 for a weekend of family portrait sessions, kids riding ATVs on the grounds, and the debut of the newest additions to the Williams family — including a pair of newborn twins making their first reunion appearance.",
+    link: "/reunion-2011",
+    linkLabel: "View Photos →",
+  },
+  {
     year: "2006",
     title: "Reunion 2006 – A Great Time Had by All!",
     body: "The Williams Family Reunion 2006 was a wonderful occasion, bringing together family members from across the country for good food, great stories, and cherished memories.",
