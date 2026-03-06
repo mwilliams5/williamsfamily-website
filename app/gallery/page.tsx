@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Photo Gallery",
@@ -88,14 +89,24 @@ export default function GalleryPage() {
 
       {/* Category chips (static — no JS filtering needed for now) */}
       <div className="flex flex-wrap gap-2 mb-10">
-        {categories.map((cat) => (
-          <span
-            key={cat}
-            className="bg-primary-100 text-primary-800 text-sm font-medium px-4 py-1.5 rounded-full"
-          >
-            {cat}
-          </span>
-        ))}
+        {categories.map((cat) =>
+          cat === "Reunions" ? (
+            <Link
+              key={cat}
+              href="/reunions"
+              className="bg-primary-100 text-primary-800 text-sm font-medium px-4 py-1.5 rounded-full hover:bg-primary-200 transition-colors"
+            >
+              {cat}
+            </Link>
+          ) : (
+            <span
+              key={cat}
+              className="bg-primary-100 text-primary-800 text-sm font-medium px-4 py-1.5 rounded-full"
+            >
+              {cat}
+            </span>
+          )
+        )}
       </div>
 
       {/* Photo grid */}
