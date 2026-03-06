@@ -32,9 +32,18 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <section className="bg-gradient-to-br from-primary-800 via-primary-700 to-primary-900 text-white py-24 px-4 text-center">
-        <h1 className="text-5xl md:text-6xl font-serif font-bold mb-4 tracking-tight">
-          The Williams Family
-        </h1>
+        <div className="flex items-center justify-center gap-4 mb-4">
+          <Image
+            src="/photos/williams-logo.png"
+            alt="Williams Family Crest"
+            width={80}
+            height={70}
+            className="brightness-0 invert"
+          />
+          <h1 className="text-5xl md:text-6xl font-serif font-bold tracking-tight">
+            The Williams Family
+          </h1>
+        </div>
         <p className="text-xl md:text-2xl text-primary-100 max-w-2xl mx-auto mb-8">
           Family is everything. Welcome to our corner of the internet — a place
           to share, remember, and stay connected.
