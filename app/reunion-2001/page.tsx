@@ -37,7 +37,7 @@ export default function Reunion2001Page() {
       </div>
 
       {/* Group photo */}
-      <div className="rounded-2xl overflow-hidden shadow-lg mb-12">
+      <div className="rounded-2xl overflow-hidden shadow-lg mb-8">
         <Image
           src="/photos/reunion-group.jpg"
           alt="Williams Family Reunion 2001 group photo"
@@ -49,6 +49,28 @@ export default function Reunion2001Page() {
         <p className="text-center text-sm text-gray-500 italic py-3 bg-white">
           All of Us! — Williams Family Reunion 2001
         </p>
+      </div>
+
+      {/* Additional photos */}
+      <div className="grid md:grid-cols-2 gap-6 mb-12">
+        <div className="rounded-2xl overflow-hidden shadow-md">
+          <Image
+            src="/photos/reunion-2001/grandmasfamily.gif"
+            alt="Grandma Peggy with her family at the 2001 reunion"
+            width={485}
+            height={298}
+            className="w-full object-cover"
+          />
+        </div>
+        <div className="rounded-2xl overflow-hidden shadow-md">
+          <Image
+            src="/photos/reunion-2001/extendedfamilys.jpg"
+            alt="Extended Williams family at the 2001 reunion"
+            width={636}
+            height={493}
+            className="w-full object-cover"
+          />
+        </div>
       </div>
 
       {/* Grandma Peggy's letter */}
