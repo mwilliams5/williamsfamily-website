@@ -19,14 +19,25 @@ const birthAnnouncements = [
 
 const reunionUpdates = [
   {
+    year: "2021",
+    title: "Reunion 2021 – Back Together Again!",
+    body: "After years apart, the Williams family reunited in July 2021 for a wonderful gathering full of laughter, memories, and good food. Browse the photo gallery to relive the fun.",
+    link: "/reunion-2021",
+    linkLabel: "View Photos →",
+  },
+  {
     year: "2006",
     title: "Reunion 2006 – A Great Time Had by All!",
     body: "The Williams Family Reunion 2006 was a wonderful occasion, bringing together family members from across the country for good food, great stories, and cherished memories.",
+    link: null,
+    linkLabel: null,
   },
   {
     year: "2001",
     title: "Reunion 2001 – A Great Success!",
     body: "The Williams Family Reunion 2001 was a huge success with outstanding attendance from family members scattered across the United States. We enjoyed great food (including the now-legendary Peach Cobbler), wonderful company, and memories to last a lifetime. A heartfelt thank-you letter was written by Grandma Peggy to all who attended.",
+    link: null,
+    linkLabel: null,
   },
 ];
 
@@ -57,6 +68,14 @@ export default function UpdatesPage() {
                 {item.title}
               </h3>
               <p className="text-gray-600 text-sm leading-relaxed">{item.body}</p>
+              {item.link && (
+                <Link
+                  href={item.link}
+                  className="inline-flex items-center gap-1 mt-3 text-sm font-semibold text-primary-700 hover:text-primary-900 transition-colors"
+                >
+                  {item.linkLabel}
+                </Link>
+              )}
             </div>
           ))}
         </div>
