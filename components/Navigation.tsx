@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
@@ -29,8 +30,15 @@ export default function Navigation() {
   return (
     <header className="bg-primary-800 text-white shadow-lg">
       <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-serif font-bold tracking-wide hover:text-primary-100 transition-colors">
-          The Williams Family
+        <Link href="/" className="flex items-center gap-2 hover:text-primary-100 transition-colors">
+          <Image
+            src="/photos/williams-logo.png"
+            alt="Williams Family Crest"
+            width={32}
+            height={28}
+            className="brightness-0 invert"
+          />
+          <span className="text-2xl font-serif font-bold tracking-wide">The Williams Family</span>
         </Link>
 
         {/* Desktop nav */}
