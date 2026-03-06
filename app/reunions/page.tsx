@@ -41,6 +41,7 @@ export default function ReunionsPage() {
             <p className="text-primary-200 text-lg">
               Friday, July 17, 2026 &nbsp;·&nbsp; Rock Hill, SC
             </p>
+            <p className="text-primary-300 mt-2 italic text-sm">&ldquo;We&apos;re in this together... because we don&apos;t have a choice&rdquo;</p>
           </div>
 
           {/* Countdown */}
