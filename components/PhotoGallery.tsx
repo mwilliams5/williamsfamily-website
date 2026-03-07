@@ -36,7 +36,7 @@ export default function PhotoGallery({ photos, basePath, altPrefix = "Family pho
     return () => window.removeEventListener("keydown", handler);
   }, [lightboxIndex, close, prev, next]);
 
-  // Lock body scroll when open
+  // Lock body scroll when lightbox is open
   useEffect(() => {
     if (lightboxIndex !== null) {
       document.body.style.overflow = "hidden";
@@ -73,7 +73,7 @@ export default function PhotoGallery({ photos, basePath, altPrefix = "Family pho
       {/* Lightbox overlay */}
       {lightboxIndex !== null && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/92"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
           onClick={close}
         >
           {/* Close button */}
@@ -94,15 +94,21 @@ export default function PhotoGallery({ photos, basePath, altPrefix = "Family pho
             ‹
           </button>
 
-          {/* Image */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={`${basePath}/${photos[lightboxIndex]}`}
-            alt={`${altPrefix} ${lightboxIndex + 1}`}
+          {/* Full-size image */}
+          <div
+            className="relative flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
-            style={{ maxWidth: "90vw", maxHeight: "88vh", objectFit: "contain" }}
-            className="rounded shadow-2xl"
-          />
+          >
+            <Image
+              src={`${basePath}/${photos[lightboxIndex]}`}
+              alt={`${altPrefix} ${lightboxIndex + 1}`}
+              width={1200}
+              height={900}
+              unoptimized
+              style={{ maxWidth: "90vw", maxHeight: "88vh", width: "auto", height: "auto" }}
+              className="rounded shadow-2xl"
+            />
+          </div>
 
           {/* Next arrow */}
           <button
@@ -114,7 +120,7 @@ export default function PhotoGallery({ photos, basePath, altPrefix = "Family pho
           </button>
 
           {/* Counter */}
-          <p className="absolute bottom-5 left-1/2 -translate-x-1/2 text-white/50 text-sm tabular-nums">
+          <p className="absolute bottom-5 left-1/2 -translate-x-1/2 text-white/50 text-sm tabular-nums pointer-events-none">
             {lightboxIndex + 1} / {photos.length}
           </p>
         </div>
