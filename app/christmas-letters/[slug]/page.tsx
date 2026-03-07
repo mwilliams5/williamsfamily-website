@@ -34,7 +34,9 @@ export default function ChristmasLetterPage({ params }: Props) {
           Updates
         </Link>
         <span>›</span>
-        <span>Christmas Letters</span>
+        <Link href="/christmas-letters" className="hover:text-primary-600 transition-colors">
+          Christmas Letters
+        </Link>
         <span>›</span>
         <span className="text-gray-600">{letter.year} · {letter.author}</span>
       </nav>
@@ -109,7 +111,7 @@ export default function ChristmasLetterPage({ params }: Props) {
           ← Back to Updates
         </Link>
         <Link
-          href="/updates#christmas-letters"
+          href="/christmas-letters"
           className="inline-flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-gray-700 border border-gray-200 hover:border-gray-400 px-4 py-2 rounded-lg transition-all hover:bg-gray-50"
         >
           🎄 All Christmas Letters

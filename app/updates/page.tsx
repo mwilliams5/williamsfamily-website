@@ -118,9 +118,17 @@ export default function UpdatesPage() {
 
       {/* Christmas Letters */}
       <section id="christmas-letters">
-        <h2 className="text-2xl font-serif font-bold text-primary-800 mb-6 flex items-center gap-2">
-          <span>🎄</span> Christmas Letters
-        </h2>
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-2xl font-serif font-bold text-primary-800 flex items-center gap-2">
+            <span>🎄</span> Christmas Letters
+          </h2>
+          <Link
+            href="/christmas-letters"
+            className="text-sm font-semibold text-primary-600 hover:text-primary-800 transition-colors"
+          >
+            View all →
+          </Link>
+        </div>
         <div className="space-y-3">
           {christmasLetters.map((letter) => (
             <Link

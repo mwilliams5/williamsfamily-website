@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import fs from "fs";
 import path from "path";
+import PhotoGallery from "@/components/PhotoGallery";
 
 export const metadata: Metadata = {
   title: "Reunion 2006 — Williams Family",
@@ -66,27 +67,16 @@ export default function Reunion2006Page() {
         </p>
       </div>
 
-      {/* Photo gallery */}
+      {/* Photo gallery with lightbox */}
       <section>
         <h2 className="text-xs font-bold uppercase tracking-widest text-warm-600 mb-5">
           Photos ({galleryPhotos.length})
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {galleryPhotos.map((photo) => (
-            <div
-              key={photo}
-              className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all"
-            >
-              <Image
-                src={`/photos/reunion-2006/${photo}`}
-                alt="Williams Family Reunion 2006"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-                sizes="(max-width: 768px) 50vw, 33vw"
-              />
-            </div>
-          ))}
-        </div>
+        <PhotoGallery
+          photos={galleryPhotos}
+          basePath="/photos/reunion-2006"
+          altPrefix="Williams Family Reunion 2006"
+        />
       </section>
 
     </div>
