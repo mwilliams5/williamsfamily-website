@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import PhotoGallery from "@/components/PhotoGallery";
 
 export const metadata: Metadata = {
   title: "Reunion 2021 — Williams Family",
@@ -64,23 +65,17 @@ export default function Reunion2021Page() {
         />
       </div>
 
-      {/* Photo grid — remaining 24 photos, 3 columns */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-14">
-        {photos.slice(1).map((filename, i) => (
-          <div
-            key={filename}
-            className="rounded-xl overflow-hidden shadow-sm bg-gray-100 aspect-square"
-          >
-            <Image
-              src={`/photos/reunion-2021/${filename}`}
-              alt={`Williams Family Reunion 2021 — photo ${i + 2}`}
-              width={500}
-              height={500}
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-        ))}
-      </div>
+      {/* Photo gallery with lightbox */}
+      <section className="mb-14">
+        <h2 className="text-xs font-bold uppercase tracking-widest text-warm-600 mb-5">
+          Photos ({photos.length - 1})
+        </h2>
+        <PhotoGallery
+          photos={photos.slice(1)}
+          basePath="/photos/reunion-2021"
+          altPrefix="Williams Family Reunion 2021"
+        />
+      </section>
 
       {/* Footer links */}
       <div className="border-t border-gray-200 pt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
