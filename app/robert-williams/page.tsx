@@ -75,7 +75,7 @@ export default function RobertWilliamsPage() {
       {/* Tribute intro */}
       <section className="prose prose-lg max-w-none text-gray-700 mb-12 text-center">
         <p>
-          Robert R. Williams was the beloved patriarch of the Williams family —
+          Robert R. Williams was the beloved patriarch of the west coast Williams family (the 10) —
           a man known by many names and loved by all who were fortunate enough
           to know him. This page is dedicated to preserving his memory and the
           words spoken in his honor.
