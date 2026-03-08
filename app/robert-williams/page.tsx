@@ -51,7 +51,7 @@ export default function RobertWilliamsPage() {
           Robert Rambo Williams
         </h1>
         <p className="text-lg text-gray-500 italic">
-          In Loving Memory &nbsp;·&nbsp; November 7, 2005
+          In Loving Memory &nbsp;·&nbsp; May 16, 1936 – October 6, 2005
         </p>
       </div>
 
