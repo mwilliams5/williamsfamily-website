@@ -12,7 +12,6 @@ const navLinks = [
   { href: "/gallery", label: "Gallery" },
   { href: "/memories", label: "Memories" },
   { href: "/updates", label: "Updates" },
-  { href: "/christmas-letters", label: "🎄 Letters" },
   { href: "/robert-williams", label: "Robert R. Williams" },
 ];
 
@@ -25,7 +24,6 @@ export default function Navigation() {
   const isActive = (href: string) => {
     if (href === "/reunions") return pathname === "/reunions" || pathname.startsWith("/reunion-");
     if (href === "/memories") return pathname === "/memories" || pathname === "/share-a-memory";
-    if (href === "/christmas-letters") return pathname.startsWith("/christmas-letters");
     return pathname === href;
   };
 
