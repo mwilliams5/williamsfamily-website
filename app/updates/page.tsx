@@ -2,6 +2,24 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { christmasLetters } from "@/lib/christmasLettersData";
 
+// — Christmas Letters helpers (mirrors /christmas-letters page) —
+const authorColors: Record<string, { bg: string; border: string; badge: string; dot: string }> = {
+  "Mary & Jake":               { bg: "bg-red-50",     border: "border-red-200",     badge: "bg-red-100 text-red-700",         dot: "bg-red-400" },
+  "Flindt Family":             { bg: "bg-emerald-50", border: "border-emerald-200", badge: "bg-emerald-100 text-emerald-700", dot: "bg-emerald-400" },
+  "Damian Williams & Family":  { bg: "bg-blue-50",    border: "border-blue-200",    badge: "bg-blue-100 text-blue-700",       dot: "bg-blue-400" },
+  "McDevitt Family":           { bg: "bg-amber-50",   border: "border-amber-200",   badge: "bg-amber-100 text-amber-700",     dot: "bg-amber-400" },
+};
+const defaultColors = { bg: "bg-gray-50", border: "border-gray-200", badge: "bg-gray-100 text-gray-700", dot: "bg-gray-400" };
+function getColors(author: string) { return authorColors[author] ?? defaultColors; }
+
+const letterYears = [...new Set(christmasLetters.map((l) => l.year))].sort((a, b) => b - a);
+
+function getPreview(content: string): string | null {
+  if (content.startsWith("[Letter content")) return null;
+  const cleaned = content.replace(/\n+/g, " ").trim();
+  return cleaned.length > 140 ? cleaned.slice(0, 140).trimEnd() + "…" : cleaned;
+}
+
 export const metadata: Metadata = {
   title: "Family Updates",
   description: "News, birth announcements, Christmas letters, and family updates from the Williams family.",
@@ -118,7 +136,7 @@ export default function UpdatesPage() {
 
       {/* Christmas Letters */}
       <section id="christmas-letters">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl font-serif font-bold text-primary-800 flex items-center gap-2">
             <span>🎄</span> Christmas Letters
           </h2>
@@ -129,27 +147,57 @@ export default function UpdatesPage() {
             View all →
           </Link>
         </div>
-        <div className="space-y-3">
-          {christmasLetters.map((letter) => (
-            <Link
-              key={letter.slug}
-              href={`/christmas-letters/${letter.slug}`}
-              className="flex items-center justify-between bg-white border border-gray-200 rounded-xl px-5 py-4 hover:border-primary-300 hover:shadow-sm transition-all group"
-            >
-              <div>
-                <p className="font-medium text-gray-800 group-hover:text-primary-800 transition-colors">
-                  {letter.title}
-                </p>
-                <p className="text-sm text-gray-500">From: {letter.author}</p>
+
+        <div className="space-y-10">
+          {letterYears.map((year) => {
+            const letters = christmasLetters.filter((l) => l.year === year);
+            return (
+              <div key={year}>
+                {/* Year marker */}
+                <div className="flex items-center gap-4 mb-5">
+                  <span className="text-2xl font-serif font-bold text-primary-800">{year}</span>
+                  <div className="flex-1 h-px bg-primary-100" />
+                  <span className="text-xs font-bold uppercase tracking-widest text-primary-300">
+                    {letters.length} {letters.length === 1 ? "letter" : "letters"}
+                  </span>
+                </div>
+
+                {/* Letter cards */}
+                <div className={`grid gap-4 ${letters.length > 1 ? "sm:grid-cols-2" : ""}`}>
+                  {letters.map((letter) => {
+                    const c = getColors(letter.author);
+                    const preview = getPreview(letter.content);
+                    return (
+                      <Link
+                        key={letter.slug}
+                        href={`/christmas-letters/${letter.slug}`}
+                        className={`group block rounded-2xl border p-6 transition-all hover:shadow-md hover:-translate-y-0.5 ${c.bg} ${c.border}`}
+                      >
+                        <div className="flex items-start justify-between gap-2 mb-3">
+                          <span className={`inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full ${c.badge}`}>
+                            <span className={`w-1.5 h-1.5 rounded-full ${c.dot}`} />
+                            {letter.author}
+                          </span>
+                          <span className="text-primary-400 group-hover:text-primary-700 transition-colors text-xl leading-none mt-0.5">›</span>
+                        </div>
+                        <h3 className="font-serif font-bold text-primary-900 text-lg leading-snug mb-2 group-hover:text-primary-700 transition-colors">
+                          {letter.title}
+                        </h3>
+                        {preview ? (
+                          <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">{preview}</p>
+                        ) : (
+                          <p className="text-sm text-gray-400 italic">Letter coming soon…</p>
+                        )}
+                        <p className="mt-4 text-xs font-semibold text-primary-600 group-hover:text-primary-800 transition-colors">
+                          Read letter →
+                        </p>
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
-              <div className="flex items-center gap-3 shrink-0">
-                <span className="text-sm font-bold text-primary-600 bg-primary-50 px-3 py-1 rounded-full">
-                  {letter.year}
-                </span>
-                <span className="text-primary-400 group-hover:text-primary-700 transition-colors text-lg">›</span>
-              </div>
-            </Link>
-          ))}
+            );
+          })}
         </div>
       </section>
     </div>
