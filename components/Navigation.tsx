@@ -13,7 +13,7 @@ const navLinks = [
   { href: "/memories", label: "Memories" },
   { href: "/updates", label: "Updates" },
   { href: "/robert-williams", label: "Robert R. Williams" },
-  { href: "/family-tree", label: "🌳 Family Tree" },
+  // { href: "/family-tree", label: "🌳 Family Tree" }, // Hidden until ready
 ];
 
 export default function Navigation() {
