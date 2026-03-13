@@ -66,7 +66,7 @@ export default function CookbookPage() {
 
           {/* Recipes as expandable details */}
           <div className="space-y-3">
-            {section.recipes.map((recipe) => (
+            {[...section.recipes].sort((a, b) => a.name.localeCompare(b.name)).map((recipe) => (
               <details
                 key={recipe.name}
                 className="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-primary-300 transition-colors"
