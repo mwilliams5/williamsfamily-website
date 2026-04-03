@@ -3,8 +3,6 @@ import { Resend } from "resend";
 import { supabaseAdmin } from "@/lib/supabase-server";
 import { supabase } from "@/lib/supabase";
 
-export const config = { api: { bodyParser: false } };
-
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const ALLOWED_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/gif", "image/webp"];
