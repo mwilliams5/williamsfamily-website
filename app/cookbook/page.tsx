@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { cookbook } from "@/lib/cookbookData";
 import PrintRecipeButton from "@/components/PrintRecipeButton";
 import RandomRecipePicker from "@/components/RandomRecipePicker";
@@ -26,6 +27,14 @@ export default function CookbookPage() {
         </p>
         {/* Random Recipe Picker */}
         <RandomRecipePicker />
+        <div className="mt-4">
+          <Link
+            href="/cookbook/submit"
+            className="inline-flex items-center gap-2 border border-primary-300 hover:border-primary-500 text-primary-700 hover:bg-primary-50 font-semibold px-5 py-2.5 rounded-xl transition-all text-sm"
+          >
+            📖 Submit a Recipe
+          </Link>
+        </div>
       </div>
 
       {/* Sticky section navigation */}

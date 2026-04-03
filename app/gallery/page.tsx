@@ -81,10 +81,16 @@ export default function GalleryPage() {
       <div className="mb-10">
         <h1 className="section-heading">Photo Gallery</h1>
         <div className="section-divider"></div>
-        <p className="text-lg text-gray-600 max-w-2xl">
+        <p className="text-lg text-gray-600 max-w-2xl mb-4">
           A collection of our favorite moments — from big milestones to
           everyday memories.
         </p>
+        <Link
+          href="/gallery/submit"
+          className="inline-flex items-center gap-2 border border-primary-300 hover:border-primary-500 text-primary-700 hover:bg-primary-50 font-semibold px-5 py-2.5 rounded-xl transition-all text-sm"
+        >
+          📸 Submit a Photo
+        </Link>
       </div>
 
       {/* Category chips (static — no JS filtering needed for now) */}

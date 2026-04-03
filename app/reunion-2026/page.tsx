@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import CountdownTimer from "@/components/CountdownTimer";
 
 export const metadata: Metadata = {
@@ -32,6 +33,12 @@ export default function Reunion2026Page() {
       {/* Live Countdown */}
       <section className="bg-primary-900 rounded-2xl p-8 text-white text-center mb-10">
         <CountdownTimer />
+        <Link
+          href="/reunion-2026/rsvp"
+          className="inline-block mt-6 bg-warm-500 hover:bg-warm-600 text-gray-900 font-bold px-8 py-3.5 rounded-xl transition-colors text-sm shadow-md"
+        >
+          🎉 RSVP Now
+        </Link>
       </section>
 
       {/* Details cards */}
