@@ -106,7 +106,7 @@ export default function ReunionCalendarPage() {
         {/* Day headers */}
         <div className="grid grid-cols-7 bg-primary-900">
           {DAYS_OF_WEEK.map((d) => (
-            <div key={d} className="text-center text-xs font-bold text-primary-200 py-2.5 uppercase tracking-wider">
+            <div key={d} className="text-center text-xs font-bold text-white py-2.5 uppercase tracking-wider">
               {d}
             </div>
           ))}
