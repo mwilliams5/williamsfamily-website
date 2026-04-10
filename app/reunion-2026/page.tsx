@@ -88,6 +88,13 @@ export default function Reunion2026Page() {
         </p>
       </section>
 
+      {/* Hidden calendar link */}
+      <div className="flex justify-end mb-6">
+        <Link href="/reunion-2026/calendar" className="text-gray-300 hover:text-gray-400 transition-colors" title="Calendar">
+          📅
+        </Link>
+      </div>
+
       {/* Past reunions link */}
       <section className="text-center">
         <h2 className="text-xl font-serif font-bold text-primary-800 mb-2">
