@@ -51,7 +51,7 @@ export const reunionEvents: Record<number, CalendarEvent[]> = {
     {
       title: "Farm Day",
       location: "Crawford Farm",
-      notes: "Bobby & Chris Crawford to host; Jeanne to call Bobbi for date/plan",
+      notes: "Bobby & Chris Crawford to host;  3-5pm farm; 5:30/6pm hotdogs & hamburgers",
     },
   ],
   15: [
@@ -106,8 +106,13 @@ export const reunionEvents: Record<number, CalendarEvent[]> = {
     },
     {
       title: "Professional Family Photos",
+      location: "9:00 am - 11:00 am",
+      notes: "David and Kim Oxendine to take pictures of individual families",
+    },
+    {
+      title: "Professional Family Photos",
       location: "11:00 AM",
-      notes: "Photographer: Dave Oxendine.",
+      notes: "Family Picture in front of Big House Photographer: Dave Oxendine.",
     },
     {
       title: "Remembrance Table",
