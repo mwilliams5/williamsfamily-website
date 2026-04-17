@@ -108,10 +108,11 @@ function Gen3Card({ p }: { p: FamilyPerson }) {
             <p className="text-xs text-gray-400">{lifespan(p)}</p>
           )}
           {marriage && (
-            <p className="text-xs text-gray-500 mt-0.5 flex items-center gap-1">
+            <p className="text-xs text-gray-500 mt-0.5 flex items-center gap-1 flex-wrap">
               {p.divorced && <span className="text-amber-500 font-bold">÷</span>}
               {p.married && <span>{p.married}</span>}
               {p.spouse && <span className="truncate">{p.spouse}</span>}
+              {p.spousePeck && !p.divorced && <PeckBadge peck={p.spousePeck} />}
             </p>
           )}
           {kids.length > 0 && <Gen4List children={kids} />}
@@ -142,8 +143,9 @@ function Gen2Card({ p }: { p: FamilyPerson }) {
             {lifespan(p) && <span>{lifespan(p)}</span>}
             {p.divorced && <span className="text-amber-500 font-semibold">÷ divorced</span>}
             {p.married && p.spouse && (
-              <span>
+              <span className="flex items-center gap-1">
                 m.&nbsp;{p.married}&nbsp;·&nbsp;{p.spouse}
+                {p.spousePeck && !p.divorced && <PeckBadge peck={p.spousePeck} />}
               </span>
             )}
           </div>
@@ -190,9 +192,12 @@ function Gen1Section({
             <p className="font-serif font-bold text-lg leading-tight">{displayName(person)}</p>
             <span className="text-[10px] text-white/30 font-mono select-none">#{person.peck}</span>
           </div>
-          <p className="text-white/70 text-sm mt-0.5">
+          <p className="text-white/70 text-sm mt-0.5 flex items-center gap-1 flex-wrap">
             {lifespan(person)}
-            {marriage && ` · ${marriage}`}
+            {marriage && <span>· {marriage}</span>}
+            {person.spousePeck && !person.divorced && (
+              <span className="text-[10px] text-white/30 font-mono">#{person.spousePeck}</span>
+            )}
           </p>
         </div>
         <div className="text-right shrink-0">

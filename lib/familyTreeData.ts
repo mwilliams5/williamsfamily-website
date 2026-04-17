@@ -8,64 +8,65 @@ export interface FamilyPerson {
   married?: number;     // year
   divorced?: boolean;
   spouse?: string;
+  spousePeck?: number;  // peck number of spouse (omit if divorced or spouse not on list)
   parentPeck?: number;  // primary Williams-side parent's peck number
   notes?: string;
 }
 
 export const family: FamilyPerson[] = [
   // ── Gen 0 — Roots ────────────────────────────────────────────────────────
-  { peck:1,  name:"Thomas Lesslie Williams",     nick:"Tom",    gen:0, born:1907, died:1980, married:1934, spouse:"Margaret Ann Rambo (Peggy)" },
-  { peck:2,  name:"Margaret Ann Rambo",          nick:"Peggy",  gen:0, born:1911, died:2004, married:1934, spouse:"Thomas Lesslie Williams (Tom)" },
+  { peck:1,  name:"Thomas Lesslie Williams",     nick:"Tom",    gen:0, born:1907, died:1980, married:1934, spouse:"Margaret Ann Rambo (Peggy)", spousePeck:2 },
+  { peck:2,  name:"Margaret Ann Rambo",          nick:"Peggy",  gen:0, born:1911, died:2004, married:1934, spouse:"Thomas Lesslie Williams (Tom)", spousePeck:1 },
 
   // ── Gen 1 — Children of Tom & Peggy ──────────────────────────────────────
   { peck:3,  name:"Thomas Lesslie Williams Jr.", nick:"Pookie", gen:1, born:1935, died:2023, married:1960, spouse:"Formerly Betty Small",              parentPeck:1 },
-  { peck:4,  name:"Robert Rambo Williams",       nick:"Robbie", gen:1, born:1936, died:2005, married:1959, spouse:"Patricia Ann Fisher (Tricia)",       parentPeck:1 },
-  { peck:5,  name:"Richard Cornell Williams",    nick:"Rici",   gen:1, born:1937,            married:1957, spouse:"Barbara Ruth Wrenn",                 parentPeck:1 },
-  { peck:6,  name:"Charles Cornwell Williams",   nick:"Chici",  gen:1, born:1940, died:2025, married:1963, spouse:"Linda Raye Driggers",                parentPeck:1 },
+  { peck:4,  name:"Robert Rambo Williams",       nick:"Robbie", gen:1, born:1936, died:2005, married:1959, spouse:"Patricia Ann Fisher (Tricia)",       spousePeck:13, parentPeck:1 },
+  { peck:5,  name:"Richard Cornell Williams",    nick:"Rici",   gen:1, born:1937,            married:1957, spouse:"Barbara Ruth Wrenn",                 spousePeck:11, parentPeck:1 },
+  { peck:6,  name:"Charles Cornwell Williams",   nick:"Chici",  gen:1, born:1940, died:2025, married:1963, spouse:"Linda Raye Driggers",                spousePeck:20, parentPeck:1 },
   { peck:7,  name:"Mary Margaret Williams",      nick:"Priss",  gen:1, born:1942,            married:1966, divorced:true, spouse:"Formerly Jun Joseph Yugawa", parentPeck:1 },
   { peck:8,  name:"Joseph Francis Williams",     nick:"Joe Joe",gen:1, born:1944, died:1991,                                                            parentPeck:1 },
-  { peck:9,  name:"Joan Marie Williams",         nick:"Joanie", gen:1, born:1946,            married:1974, spouse:"Michael Edward Platt",               parentPeck:1 },
+  { peck:9,  name:"Joan Marie Williams",         nick:"Joanie", gen:1, born:1946,            married:1974, spouse:"Michael Edward Platt",               spousePeck:38, parentPeck:1 },
   { peck:10, name:"Annie Cornwell Williams",                    gen:1, born:1949,                          spouse:"Formerly James David Porter",         parentPeck:1 },
 
   // ── Gen 2 — Under Pookie (3) ──────────────────────────────────────────────
   { peck:19, name:"Thomas Lesslie Williams III", nick:"Tommy",  gen:2, born:1962, died:2018, parentPeck:3 },
-  { peck:22, name:"Hulan Small Williams",        nick:"Buddy",  gen:2, born:1964, married:1994, spouse:"Donna Carol Preslar",          parentPeck:3 },
-  { peck:32, name:"Elizabeth Small Williams",                   gen:2, born:1969, married:2006, spouse:"Sandy Britt",                  parentPeck:3 },
+  { peck:22, name:"Hulan Small Williams",        nick:"Buddy",  gen:2, born:1964, married:1994, spouse:"Donna Carol Preslar",          spousePeck:69, parentPeck:3 },
+  { peck:32, name:"Elizabeth Small Williams",                   gen:2, born:1969, married:2006, spouse:"Sandy Britt",                  spousePeck:108, parentPeck:3 },
 
   // ── Gen 2 — Under Robert (4) ─────────────────────────────────────────────
-  { peck:15, name:"Margaret Jeanne Williams",    nick:"Jeanne", gen:2, born:1960, married:1978, spouse:"Charles Raymond Flindt Jr. (Chuck)", parentPeck:4 },
+  { peck:15, name:"Margaret Jeanne Williams",    nick:"Jeanne", gen:2, born:1960, married:1978, spouse:"Charles Raymond Flindt Jr. (Chuck)", spousePeck:43, parentPeck:4 },
   { peck:18, name:"Katherine Redette Williams",  nick:"Kathi",  gen:2, born:1961,                                                            parentPeck:4 },
-  { peck:21, name:"Robert Rambo Williams Jr.",   nick:"Bob",    gen:2, born:1963, married:1986, spouse:"Miriam Elizabeth Curtis",            parentPeck:4 },
+  { peck:21, name:"Robert Rambo Williams Jr.",   nick:"Bob",    gen:2, born:1963, married:1986, spouse:"Miriam Elizabeth Curtis",            spousePeck:53, parentPeck:4 },
   { peck:24, name:"Lesslie Graham Damian Williams", nick:"Damian", gen:2, born:1965,                                                        parentPeck:4 },
   { peck:28, name:"Michael Wilson Thaddeus Williams",            gen:2, born:1967, married:1996, divorced:true, spouse:"Sheila Kaye Jones", parentPeck:4 },
-  { peck:31, name:"Thomas Allen Christopher Williams",           gen:2, born:1969, married:1997, spouse:"Priscilla Cristina Torres",        parentPeck:4 },
-  { peck:35, name:"Patricia Ann Williams",       nick:"Tricia", gen:2, born:1971, married:1994, spouse:"Patrick Sean McDevitt",             parentPeck:4 },
-  { peck:36, name:"Joseph Francis Williams II",  nick:"Joe",    gen:2, born:1973, died:2024, married:2008, spouse:"Joanna Florence Williams", parentPeck:4 },
-  { peck:37, name:"Mary Elizabeth Williams",                    gen:2, born:1974, married:2011, spouse:"Michael Nadell Ross",               parentPeck:4 },
+  { peck:31, name:"Thomas Allen Christopher Williams",           gen:2, born:1969, married:1997, spouse:"Priscilla Cristina Torres",        spousePeck:83, parentPeck:4 },
+  { peck:35, name:"Patricia Ann Williams",       nick:"Tricia", gen:2, born:1971, married:1994, spouse:"Patrick Sean McDevitt",             spousePeck:70, parentPeck:4 },
+  { peck:36, name:"Joseph Francis Williams II",  nick:"Joe",    gen:2, born:1973, died:2024, married:2008, spouse:"Joanna Florence Williams", spousePeck:116, parentPeck:4 },
+  { peck:37, name:"Mary Elizabeth Williams",                    gen:2, born:1974, married:2011, spouse:"Michael Nadell Ross",               spousePeck:125, parentPeck:4 },
   { peck:42, name:"Heather Marie Williams",                     gen:2, born:1978,                                                            parentPeck:4 },
 
   // ── Gen 2 — Under Richard (5) ────────────────────────────────────────────
-  { peck:12, name:"Margaret Ruth Williams",      nick:"Marti",  gen:2, born:1958, married:1998, spouse:"Kip Larson",              parentPeck:5 },
-  { peck:14, name:"Debra Michelle Williams",     nick:"Gidget", gen:2, born:1959, married:2009, spouse:"William Timothy Sharpe",  parentPeck:5 },
+  { peck:12, name:"Margaret Ruth Williams",      nick:"Marti",  gen:2, born:1958, married:1998, spouse:"Kip Larson",              spousePeck:92,  parentPeck:5 },
+  { peck:14, name:"Debra Michelle Williams",     nick:"Gidget", gen:2, born:1959, married:2009, spouse:"William Timothy Sharpe",  spousePeck:115, parentPeck:5 },
   { peck:17, name:"Richard Cornell Williams Jr.",nick:"Richi",  gen:2, born:1961,                                                 parentPeck:5 },
-  { peck:23, name:"Barbara Inez Williams",       nick:"Bobbi",  gen:2, born:1964, spouse:"Chris Crawford",                       parentPeck:5 },
+  { peck:23, name:"Barbara Inez Williams",       nick:"Bobbi",  gen:2, born:1964, spouse:"Chris Crawford",                       spousePeck:142, parentPeck:5 },
 
   // ── Gen 2 — Under Charles (6) ────────────────────────────────────────────
-  { peck:25, name:"Charles Cornwell Williams Jr.", nick:"Chad", gen:2, born:1965, married:1990, spouse:"Malynda Joyce McCarter",        parentPeck:6 },
-  { peck:29, name:"Ann Marie Williams",                         gen:2, born:1967, married:1997, spouse:"Leslie Shaw Blackmon (Shaw)",   parentPeck:6 },
+  { peck:25, name:"Charles Cornwell Williams Jr.", nick:"Chad", gen:2, born:1965, married:1990, spouse:"Malynda Joyce McCarter",        spousePeck:58,  parentPeck:6 },
+  { peck:29, name:"Ann Marie Williams",                         gen:2, born:1967, married:1997, spouse:"Leslie Shaw Blackmon (Shaw)",   spousePeck:82,  parentPeck:6 },
 
   // ── Gen 2 — Under Priss (7) ──────────────────────────────────────────────
   { peck:26, name:"Sam Hawley",                                 gen:2, born:1966, parentPeck:7 },
   { peck:30, name:"Meiji Thomas Yugawa",                        gen:2, born:1968, parentPeck:7 },
-  { peck:33, name:"Koji Yugawa",                                gen:2, born:1969, married:1994, spouse:"Amanda Beth Cohn", parentPeck:7 },
+  { peck:33, name:"Koji Yugawa",                                gen:2, born:1969, married:1994, spouse:"Amanda Beth Cohn", spousePeck:72, parentPeck:7 },
 
   // ── Gen 2 — Under Joanie (9) ─────────────────────────────────────────────
   { peck:40, name:"John Michael Platt",                         gen:2, born:1977, parentPeck:9 },
-  { peck:45, name:"Charleston Rambo Platt",                     gen:2, born:1979, married:2016, spouse:"William Allen Morford", parentPeck:9 },
-  { peck:49, name:"Chappell Edward Platt",                      gen:2, born:1981, married:2008, spouse:"Danielle Marie Petro",  parentPeck:9 },
+  { peck:45, name:"Charleston Rambo Platt",                     gen:2, born:1979, married:2016, spouse:"William Allen Morford", spousePeck:140, parentPeck:9 },
+  { peck:49, name:"Chappell Edward Platt",                      gen:2, born:1981, married:2008, spouse:"Danielle Marie Petro",  spousePeck:112, parentPeck:9 },
 
   // ── Gen 2 — Under Annie (10) ─────────────────────────────────────────────
-  { peck:39, name:"Christi Ann Porter",                         gen:2, born:1975, married:1995, spouse:"Michael Lloyd Cox",      parentPeck:10 },
+  { peck:39, name:"Christi Ann Porter",                         gen:2, born:1975, married:1995, spouse:"Michael Lloyd Cox",      spousePeck:81, parentPeck:10 },
   { peck:41, name:"Susan Rambo Porter",                         gen:2, born:1977, married:1997, divorced:true, spouse:"Formerly Chance Wiley Champion",  parentPeck:10 },
 
   // ── Gen 3 — Under Buddy (22) ─────────────────────────────────────────────
@@ -73,15 +74,15 @@ export const family: FamilyPerson[] = [
   { peck:88, name:"Jacob Hulan Williams",                       gen:3, born:1998, parentPeck:22 },
 
   // ── Gen 3 — Under Jeanne (15) ────────────────────────────────────────────
-  { peck:44, name:"Julie Marie Flindt",                         gen:3, born:1975, married:2005, spouse:"Luis Humbero Pinedo Jr.", parentPeck:15 },
+  { peck:44, name:"Julie Marie Flindt",                         gen:3, born:1975, married:2005, spouse:"Luis Humbero Pinedo Jr.", spousePeck:106, parentPeck:15 },
   { peck:46, name:"Cheryl Lynn Flindt",                         gen:3, born:1979, married:2009, divorced:true, spouse:"Formerly Chad Austin Sisco", parentPeck:15 },
-  { peck:48, name:"David Michael Flindt",                       gen:3, born:1981, married:2009, spouse:"Kelly Lynn Flindt",       parentPeck:15 },
+  { peck:48, name:"David Michael Flindt",                       gen:3, born:1981, married:2009, spouse:"Kelly Lynn Flindt",       spousePeck:114, parentPeck:15 },
 
   // ── Gen 3 — Under Kathi (18) — father: Jeff Olson ────────────────────────
-  { peck:47, name:"Sabrina Redette Olson",                      gen:3, born:1981, married:2007, spouse:"David Joseph Gigliotti", parentPeck:18 },
+  { peck:47, name:"Sabrina Redette Olson",                      gen:3, born:1981, married:2007, spouse:"David Joseph Gigliotti", spousePeck:109, parentPeck:18 },
   { peck:50, name:"Kristen Redette Olson",                      gen:3, born:1982, parentPeck:18 },
   { peck:52, name:"Austin Jeffery Robert Olson",                gen:3, born:1986, parentPeck:18 },
-  { peck:56, name:"Racheal Marie Redette Olson",                gen:3, born:1988, spouse:"Jared Jeffrey Adams",                  parentPeck:18 },
+  { peck:56, name:"Racheal Marie Redette Olson",                gen:3, born:1988, spouse:"Jared Jeffrey Adams",                  spousePeck:119, parentPeck:18 },
   { peck:60, name:"Mason Garrette Tanner Olson",  nick:"Tanner",gen:3, born:1991, parentPeck:18 },
   { peck:65, name:"J Winston Michael Travis Olson",nick:"Winston",gen:3, born:1993, parentPeck:18 },
 
@@ -92,7 +93,7 @@ export const family: FamilyPerson[] = [
   // ── Gen 3 — Under Damian (24) ────────────────────────────────────────────
   { peck:59, name:"Kimberly Christine Marie Williams",          gen:3, born:1990, parentPeck:24 },
   { peck:63, name:"Christopher Robert Damian Williams",         gen:3, born:1993, parentPeck:24 },
-  { peck:73, name:"Autumn Lesslie Redette Williams",            gen:3, born:1995, married:2023, spouse:"Chris Perry", parentPeck:24 },
+  { peck:73, name:"Autumn Lesslie Redette Williams",            gen:3, born:1995, married:2023, spouse:"Chris Perry", spousePeck:151, parentPeck:24 },
 
   // ── Gen 3 — Under Michael WT (28) ────────────────────────────────────────
   { peck:91, name:"Georgia Elizabeth Marie Williams",           gen:3, born:1999, parentPeck:28 },
@@ -115,16 +116,16 @@ export const family: FamilyPerson[] = [
   { peck:131,name:"Logan Michael Williams",                     gen:3, born:2012, parentPeck:36 },
 
   // ── Gen 3 — Under Mary Elizabeth (37) ───────────────────────────────────
-  { peck:75, name:"Jakob Thomas Michael Elvis Williams",        gen:3, born:1996, married:2024, spouse:"Emma Elise Steinmetz", parentPeck:37 },
+  { peck:75, name:"Jakob Thomas Michael Elvis Williams",        gen:3, born:1996, married:2024, spouse:"Emma Elise Steinmetz", spousePeck:152, parentPeck:37 },
   { peck:130,name:"Charleston Elizabeth Rambo Nadell Brooklyn Ross", gen:3, born:2012, parentPeck:37 },
   { peck:135,name:"Michael Michigan Rambo Williams Blake Richard Jensen Ross", gen:3, born:2014, parentPeck:37 },
 
   // ── Gen 3 — Under Marti (12) ─────────────────────────────────────────────
-  { peck:51, name:"Brian Hilery Williams",                      gen:3, born:1986, married:2011, spouse:"Jessica Tyler Williams", parentPeck:12, notes:"Father: Philip Williams" },
+  { peck:51, name:"Brian Hilery Williams",                      gen:3, born:1986, married:2011, spouse:"Jessica Tyler Williams", spousePeck:124, parentPeck:12, notes:"Father: Philip Williams" },
   { peck:102,name:"Shaheim Darin Larson",                       gen:3, born:2003, parentPeck:12 },
 
   // ── Gen 3 — Under Gidget (14) ────────────────────────────────────────────
-  { peck:54, name:"Meghan Leslie Keogh",                        gen:3, born:1986, spouse:"Creighton Hayes",   parentPeck:14, notes:"Father: David Joseph Keogh" },
+  { peck:54, name:"Meghan Leslie Keogh",                        gen:3, born:1986, spouse:"Creighton Hayes",   spousePeck:138, parentPeck:14, notes:"Father: David Joseph Keogh" },
   { peck:57, name:"Garrett Clark Keogh",                        gen:3, born:1990,                             parentPeck:14, notes:"Father: David Joseph Keogh" },
   { peck:80, name:"Madison Lee Ayers",                          gen:3, born:1997,                             parentPeck:14, notes:"Father: Greg Ayers" },
 
@@ -149,7 +150,7 @@ export const family: FamilyPerson[] = [
   { peck:77, name:"Hannah Isabelle Hawley",                     gen:3, born:1996, parentPeck:26 },
 
   // ── Gen 3 — Under Meiji (30) ─────────────────────────────────────────────
-  { peck:71, name:"Ranae Wuanita Yugawa",                       gen:3, born:1994, spouse:"Jeremy Hagar", parentPeck:30, notes:"Mother: Georgene Ranae Holliday" },
+  { peck:71, name:"Ranae Wuanita Yugawa",                       gen:3, born:1994, spouse:"Jeremy Hagar", spousePeck:137, parentPeck:30, notes:"Mother: Georgene Ranae Holliday" },
   { peck:89, name:"Reece Thomas Yugawa",                        gen:3, born:1998, parentPeck:30, notes:"Mother: Georgene Ranae Holliday" },
 
   // ── Gen 3 — Under Koji (33) ──────────────────────────────────────────────
