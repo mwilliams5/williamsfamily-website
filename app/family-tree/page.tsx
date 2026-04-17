@@ -57,6 +57,14 @@ const GEN1_COLORS = [
 
 // ── Sub-components ────────────────────────────────────────────────────────────
 
+function PeckBadge({ peck }: { peck: number }) {
+  return (
+    <span className="text-[10px] text-gray-300 font-mono select-none" title={`Pecking order #${peck}`}>
+      #{peck}
+    </span>
+  );
+}
+
 function Gen4List({ children }: { children: FamilyPerson[] }) {
   if (!children.length) return null;
   return (
@@ -70,6 +78,7 @@ function Gen4List({ children }: { children: FamilyPerson[] }) {
             <span className="text-gray-400">{p.name.split(" ").slice(1).join(" ")}</span>
             {p.born && <span className="text-gray-400 ml-1">({p.born})</span>}
           </span>
+          <PeckBadge peck={p.peck} />
         </li>
       ))}
     </ul>
@@ -86,12 +95,15 @@ function Gen3Card({ p }: { p: FamilyPerson }) {
           {initials(p.name)}
         </div>
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-semibold text-gray-800 leading-tight">
-            {p.nick ?? p.name.split(" ")[0]}{" "}
-            <span className="font-normal text-gray-500 text-xs">
-              {p.name.split(" ").slice(1).join(" ")}
-            </span>
-          </p>
+          <div className="flex items-center gap-1.5">
+            <p className="text-sm font-semibold text-gray-800 leading-tight">
+              {p.nick ?? p.name.split(" ")[0]}{" "}
+              <span className="font-normal text-gray-500 text-xs">
+                {p.name.split(" ").slice(1).join(" ")}
+              </span>
+            </p>
+            <PeckBadge peck={p.peck} />
+          </div>
           {lifespan(p) && (
             <p className="text-xs text-gray-400">{lifespan(p)}</p>
           )}
@@ -120,9 +132,12 @@ function Gen2Card({ p }: { p: FamilyPerson }) {
           {initials(p.name)}
         </div>
         <div className="min-w-0 flex-1">
-          <p className="font-serif font-bold text-gray-800 text-sm leading-tight">
-            {displayName(p)}
-          </p>
+          <div className="flex items-center gap-1.5">
+            <p className="font-serif font-bold text-gray-800 text-sm leading-tight">
+              {displayName(p)}
+            </p>
+            <PeckBadge peck={p.peck} />
+          </div>
           <div className="flex flex-wrap gap-x-2 text-xs text-gray-500 mt-0.5">
             {lifespan(p) && <span>{lifespan(p)}</span>}
             {p.divorced && <span className="text-amber-500 font-semibold">÷ divorced</span>}
@@ -171,7 +186,10 @@ function Gen1Section({
           {initials(person.name)}
         </div>
         <div className="flex-1 min-w-0">
-          <p className="font-serif font-bold text-lg leading-tight">{displayName(person)}</p>
+          <div className="flex items-center gap-2">
+            <p className="font-serif font-bold text-lg leading-tight">{displayName(person)}</p>
+            <span className="text-[10px] text-white/30 font-mono select-none">#{person.peck}</span>
+          </div>
           <p className="text-white/70 text-sm mt-0.5">
             {lifespan(person)}
             {marriage && ` · ${marriage}`}
@@ -264,7 +282,10 @@ export default function FamilyTreePage() {
                 <div className="w-16 h-16 rounded-full bg-white/20 text-white text-xl font-bold flex items-center justify-center mx-auto mb-2">
                   {initials(p.name)}
                 </div>
-                <p className="font-serif font-bold text-lg">{displayName(p)}</p>
+                <div className="flex items-center justify-center gap-1.5">
+                  <p className="font-serif font-bold text-lg">{displayName(p)}</p>
+                  <span className="text-[10px] text-amber-200/40 font-mono select-none">#{p.peck}</span>
+                </div>
                 <p className="text-amber-200 text-sm">{lifespan(p)}</p>
               </div>
             ))}

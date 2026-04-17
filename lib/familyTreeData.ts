@@ -45,7 +45,7 @@ export const family: FamilyPerson[] = [
   { peck:42, name:"Heather Marie Williams",                     gen:2, born:1978,                                                            parentPeck:4 },
 
   // ── Gen 2 — Under Richard (5) ────────────────────────────────────────────
-  { peck:12, name:"Margaret Ruth Williams",      nick:"Marti",  gen:2, born:1958, married:1999, spouse:"Kip Larson",              parentPeck:5 },
+  { peck:12, name:"Margaret Ruth Williams",      nick:"Marti",  gen:2, born:1958, married:1998, spouse:"Kip Larson",              parentPeck:5 },
   { peck:14, name:"Debra Michelle Williams",     nick:"Gidget", gen:2, born:1959, married:2009, spouse:"William Timothy Sharpe",  parentPeck:5 },
   { peck:17, name:"Richard Cornell Williams Jr.",nick:"Richi",  gen:2, born:1961,                                                 parentPeck:5 },
   { peck:23, name:"Barbara Inez Williams",       nick:"Bobbi",  gen:2, born:1964, spouse:"Chris Crawford",                       parentPeck:5 },
@@ -66,7 +66,7 @@ export const family: FamilyPerson[] = [
 
   // ── Gen 2 — Under Annie (10) ─────────────────────────────────────────────
   { peck:39, name:"Christi Ann Porter",                         gen:2, born:1975, married:1995, spouse:"Michael Lloyd Cox",      parentPeck:10 },
-  { peck:41, name:"Susan Rambo Porter",                         gen:2, born:1977, married:1997, spouse:"Chance Wiley Champion",  parentPeck:10 },
+  { peck:41, name:"Susan Rambo Porter",                         gen:2, born:1977, married:1997, divorced:true, spouse:"Formerly Chance Wiley Champion",  parentPeck:10 },
 
   // ── Gen 3 — Under Buddy (22) ─────────────────────────────────────────────
   { peck:74, name:"Jeremy Thomas Williams",                     gen:3, born:1995, parentPeck:22 },
@@ -74,19 +74,19 @@ export const family: FamilyPerson[] = [
 
   // ── Gen 3 — Under Jeanne (15) ────────────────────────────────────────────
   { peck:44, name:"Julie Marie Flindt",                         gen:3, born:1975, married:2005, spouse:"Luis Humbero Pinedo Jr.", parentPeck:15 },
-  { peck:46, name:"Cheryl Lynn Flindt",                         gen:3, born:1979, married:2009, spouse:"Chad Austin Sisco",       parentPeck:15 },
+  { peck:46, name:"Cheryl Lynn Flindt",                         gen:3, born:1979, married:2009, divorced:true, spouse:"Formerly Chad Austin Sisco", parentPeck:15 },
   { peck:48, name:"David Michael Flindt",                       gen:3, born:1981, married:2009, spouse:"Kelly Lynn Flindt",       parentPeck:15 },
 
   // ── Gen 3 — Under Kathi (18) — father: Jeff Olson ────────────────────────
   { peck:47, name:"Sabrina Redette Olson",                      gen:3, born:1981, married:2007, spouse:"David Joseph Gigliotti", parentPeck:18 },
   { peck:50, name:"Kristen Redette Olson",                      gen:3, born:1982, parentPeck:18 },
   { peck:52, name:"Austin Jeffery Robert Olson",                gen:3, born:1986, parentPeck:18 },
-  { peck:56, name:"Racheal Marie Redette Olson",                gen:3, born:1988, spouse:"Jared Jeffrey Adams",                  parentPeck:18 },
+  { peck:56, name:"Racheal Marie Redette Olson",                gen:3, born:1988, divorced:true, spouse:"Formerly Jared Jeffrey Adams", parentPeck:18 },
   { peck:60, name:"Mason Garrette Tanner Olson",  nick:"Tanner",gen:3, born:1991, parentPeck:18 },
   { peck:65, name:"J Winston Michael Travis Olson",nick:"Winston",gen:3, born:1993, parentPeck:18 },
 
   // ── Gen 3 — Under Bob Jr. (21) ───────────────────────────────────────────
-  { peck:55, name:"Robert Rambo Williams III",                  gen:3, born:1988, married:2016, spouse:"Eva Rodriguez", parentPeck:21 },
+  { peck:55, name:"Robert Rambo Williams III",                  gen:3, born:1988, married:2016, divorced:true, spouse:"Formerly Eva Rodriguez", parentPeck:21 },
   { peck:61, name:"Erica Nicole Lynn Williams",                 gen:3, born:1992, parentPeck:21 },
 
   // ── Gen 3 — Under Damian (24) ────────────────────────────────────────────
@@ -159,7 +159,7 @@ export const family: FamilyPerson[] = [
   // ── Gen 3 — Under Charleston Rambo Platt (45) ────────────────────────────
   { peck:146,name:"Magnolia Frances Morford",                   gen:3, parentPeck:45 },
   { peck:149,name:"Solstice Rose Morford",                      gen:3, parentPeck:45 },
-  { peck:150,name:"Miles Rambo Platt",                          gen:3, parentPeck:45 },
+  { peck:150,name:"Miles Rambo Platt",                          gen:3, parentPeck:40 },
 
   // ── Gen 3 — Under Chappell Platt (49) ────────────────────────────────────
   { peck:117,name:"Sophia Marie Platt",                         gen:3, born:2009, parentPeck:49 },
