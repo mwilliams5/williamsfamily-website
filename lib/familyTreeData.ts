@@ -81,7 +81,7 @@ export const family: FamilyPerson[] = [
   { peck:47, name:"Sabrina Redette Olson",                      gen:3, born:1981, married:2007, spouse:"David Joseph Gigliotti", parentPeck:18 },
   { peck:50, name:"Kristen Redette Olson",                      gen:3, born:1982, parentPeck:18 },
   { peck:52, name:"Austin Jeffery Robert Olson",                gen:3, born:1986, parentPeck:18 },
-  { peck:56, name:"Racheal Marie Redette Olson",                gen:3, born:1988, divorced:true, spouse:"Formerly Jared Jeffrey Adams", parentPeck:18 },
+  { peck:56, name:"Racheal Marie Redette Olson",                gen:3, born:1988, spouse:"Jared Jeffrey Adams",                  parentPeck:18 },
   { peck:60, name:"Mason Garrette Tanner Olson",  nick:"Tanner",gen:3, born:1991, parentPeck:18 },
   { peck:65, name:"J Winston Michael Travis Olson",nick:"Winston",gen:3, born:1993, parentPeck:18 },
 
