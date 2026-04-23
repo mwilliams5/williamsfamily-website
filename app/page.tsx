@@ -63,6 +63,17 @@ export default function HomePage() {
             <p className="text-primary-300 mt-2 italic text-sm">&ldquo;We&apos;re in this together... because we don&apos;t have a choice&rdquo;</p>
           </div>
           <CountdownTimer />
+
+          {/* West Coast sub-countdown */}
+          <div className="border-t border-white/10 pt-5 mt-1">
+            <CountdownTimer
+              targetDate="2026-07-11T00:00:00"
+              label="West Coast Williams Incoming"
+              expiredMessage="🌊 The West Coast Williams Have Arrived!"
+              small
+            />
+          </div>
+
           <Link
             href="/reunion-2026"
             className="inline-block bg-warm-500 hover:bg-warm-600 text-gray-900 font-bold px-6 py-3 rounded-lg transition-colors"
