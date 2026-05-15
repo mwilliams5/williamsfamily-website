@@ -67,7 +67,7 @@ export default function HomePage() {
           {/* West Coast sub-countdown */}
           <div className="border-t border-white/10 pt-5 mt-1">
             <CountdownTimer
-              targetDate="2026-07-11T00:00:00"
+              targetDate="2026-07-11T15:00:00-04:00"
               label="West Coast Williams Incoming"
               expiredMessage="🌊 The West Coast Williams Have Arrived!"
               small

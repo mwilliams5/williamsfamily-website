@@ -44,7 +44,7 @@ interface CountdownTimerProps {
   small?: boolean;
 }
 
-const REUNION_DATE = "2026-07-17T00:00:00";
+const REUNION_DATE = "2026-07-17T11:00:00-04:00";
 
 export default function CountdownTimer({
   targetDate = REUNION_DATE,
