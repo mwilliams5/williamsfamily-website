@@ -37,10 +37,16 @@ function Unit({ value, label, small }: { value: number; label: string; small?: b
   );
 }
 
+interface Phase {
+  after: string;   // ISO date string — show this message once this date has passed
+  message: string;
+}
+
 interface CountdownTimerProps {
   targetDate?: string;   // ISO date string, defaults to reunion date
   label?: string;
   expiredMessage?: string;
+  phases?: Phase[];      // time-based messages shown after expiry
   small?: boolean;
 }
 
@@ -50,6 +56,7 @@ export default function CountdownTimer({
   targetDate = REUNION_DATE,
   label = "Countdown to Reunion Day",
   expiredMessage = "🎉 Reunion Day is Here!",
+  phases = [],
   small = false,
 }: CountdownTimerProps) {
   const target = new Date(targetDate);
@@ -65,9 +72,14 @@ export default function CountdownTimer({
   if (!timeLeft) return null;
 
   if (timeLeft.expired) {
+    // Find the most recent phase whose 'after' date has passed
+    const activePhase = phases
+      .filter((p) => Date.now() >= new Date(p.after).getTime())
+      .sort((a, b) => new Date(b.after).getTime() - new Date(a.after).getTime())[0];
+    const message = activePhase ? activePhase.message : expiredMessage;
     return (
       <div className="text-center py-4">
-        <p className={`font-serif font-bold ${small ? "text-lg" : "text-2xl"}`}>{expiredMessage}</p>
+        <p className={`font-serif font-bold ${small ? "text-lg" : "text-2xl"}`}>{message}</p>
       </div>
     );
   }

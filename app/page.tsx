@@ -62,7 +62,14 @@ export default function HomePage() {
             <p className="text-primary-200 mt-1">July 17, 2026 &nbsp;·&nbsp; Rock Hill, SC</p>
             <p className="text-primary-300 mt-2 italic text-sm">&ldquo;We&apos;re in this together... because we don&apos;t have a choice&rdquo;</p>
           </div>
-          <CountdownTimer />
+          <CountdownTimer
+            phases={[
+              {
+                after: "2026-07-18T11:00:00-04:00",
+                message: "🎉 What a wonderful reunion! It was so great seeing everyone — we'll see you all again in 2031!",
+              },
+            ]}
+          />
 
           {/* West Coast sub-countdown */}
           <div className="border-t border-white/10 pt-5 mt-1">
@@ -70,6 +77,10 @@ export default function HomePage() {
               targetDate="2026-07-11T15:00:00-04:00"
               label="West Coast Williams Incoming"
               expiredMessage="🌊 The West Coast Williams Have Arrived!"
+              phases={[
+                { after: "2026-07-18T00:00:00-04:00", message: "🏖️ The West Coast Williams Have Headed to the Beach" },
+                { after: "2026-07-26T00:00:00-04:00", message: "✈️ The West Coast Williams Have Headed Home" },
+              ]}
               small
             />
           </div>
