@@ -26,11 +26,11 @@ export const metadata: Metadata = {
 };
 
 const birthAnnouncements = [
-  { name: "Ariana Grace Malayna Williams", date: "September 2003", parents: "Thomas (Tbone) Williams & family" },
+  { name: "Ariana Grace Malayna Williams", date: "September 2003", parents: "Thomas Williams & family" },
   { name: "Sarah Victoria Noel McDevitt", date: "July 2003", parents: "McDevitt family" },
   { name: "Samuel Charles Blackmon", date: "January 2003", parents: "Williams family" },
   { name: "Kendall Leslie Cox", date: "January 2003", parents: "Williams family" },
-  { name: "Isabella Marie Adeline Williams", date: "October 2002", parents: "Damian Williams & family" },
+  { name: "Isabella Marie Adeline Williams", date: "October 2002", parents: "Thomas Williams & family" },
   { name: "Rebecca Ashley Marjan McDevitt", date: "May 2002", parents: "McDevitt family" },
 ];
 
