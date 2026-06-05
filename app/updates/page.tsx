@@ -27,7 +27,6 @@ export const metadata: Metadata = {
 
 const birthAnnouncements = [
   { name: "Ariana Grace Malayna Williams", date: "September 2003", parents: "Thomas (Tbone) Williams & family" },
-  { name: "Haylee Marie Eslinger", date: "August 2003", parents: "Williams family" },
   { name: "Sarah Victoria Noel McDevitt", date: "July 2003", parents: "McDevitt family" },
   { name: "Samuel Charles Blackmon", date: "January 2003", parents: "Williams family" },
   { name: "Kendall Leslie Cox", date: "January 2003", parents: "Williams family" },
