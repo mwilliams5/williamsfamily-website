@@ -19,6 +19,7 @@ interface Photo {
 interface RSVP {
   id: string; created_at: string; name: string; attending_count: number;
   email: string | null; bringing_dish: string | null; notes: string | null;
+  approved: boolean;
 }
 
 function formatDate(iso: string) {
@@ -79,6 +80,13 @@ export default function AdminPage() {
     setWorking(id + action);
     await fetch("/api/admin/photos", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, action, storage_path }) });
     setPhotos((p) => p.filter((ph) => ph.id !== id));
+    setWorking(null);
+  };
+
+  const handleRsvpApprove = async (id: string, approved: boolean) => {
+    setWorking(id + "approve");
+    await fetch("/api/admin/rsvps", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, approved }) });
+    setRsvps((p) => p.map((r) => r.id === id ? { ...r, approved } : r));
     setWorking(null);
   };
 
@@ -257,14 +265,18 @@ export default function AdminPage() {
           ) : (
             <div className="space-y-3">
               {rsvps.map((r) => (
-                <div key={r.id} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+                <div key={r.id} className={`bg-white border rounded-xl p-5 shadow-sm ${r.approved ? "border-green-200" : "border-gray-200"}`}>
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 flex-wrap">
                         <p className="font-semibold text-primary-800">{r.name}</p>
                         <span className="text-xs bg-primary-100 text-primary-700 font-bold px-2 py-0.5 rounded-full">
                           {r.attending_count} {r.attending_count === 1 ? "guest" : "guests"}
                         </span>
+                        {r.approved
+                          ? <span className="text-xs bg-green-100 text-green-700 font-bold px-2 py-0.5 rounded-full">✓ Approved</span>
+                          : <span className="text-xs bg-yellow-100 text-yellow-700 font-bold px-2 py-0.5 rounded-full">Pending</span>
+                        }
                       </div>
                       {r.email && <p className="text-xs text-gray-500 mt-0.5">{r.email}</p>}
                       {r.bringing_dish && <p className="text-xs text-warm-600 mt-0.5">🍽 {r.bringing_dish}</p>}
@@ -272,8 +284,14 @@ export default function AdminPage() {
                     </div>
                     <div className="text-right shrink-0">
                       <p className="text-xs text-gray-400">{formatDate(r.created_at)}</p>
+                      <button
+                        onClick={() => handleRsvpApprove(r.id, !r.approved)}
+                        disabled={working !== null}
+                        className={`block text-xs mt-1 transition-colors ${r.approved ? "text-yellow-500 hover:text-yellow-700" : "text-green-500 hover:text-green-700"}`}>
+                        {working === r.id + "approve" ? "Saving…" : r.approved ? "Unapprove" : "✓ Approve"}
+                      </button>
                       <button onClick={() => handleRsvpDelete(r.id)} disabled={working !== null}
-                        className="text-xs text-red-400 hover:text-red-600 mt-1 transition-colors">
+                        className="block text-xs text-red-400 hover:text-red-600 mt-1 transition-colors">
                         {working === r.id + "delete" ? "Removing…" : "Remove"}
                       </button>
                     </div>
