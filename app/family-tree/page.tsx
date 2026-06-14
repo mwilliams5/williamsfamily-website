@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { family, type FamilyPerson } from "@/lib/familyTreeData";
+import { fetchFamily, type FamilyPerson } from "@/lib/familyTreeData";
+
+export const revalidate = 3600; // revalidate from Supabase every hour
 
 export const metadata: Metadata = {
   title: "Family Tree",
@@ -8,12 +10,6 @@ export const metadata: Metadata = {
 };
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
-
-function childrenOf(peck: number): FamilyPerson[] {
-  return family
-    .filter((p) => p.parentPeck === peck)
-    .sort((a, b) => (a.born ?? 9999) - (b.born ?? 9999));
-}
 
 function lifespan(p: FamilyPerson): string {
   if (p.born && p.died) return `${p.born}–${p.died}`;
@@ -57,6 +53,8 @@ const GEN1_COLORS = [
 
 // ── Sub-components ────────────────────────────────────────────────────────────
 
+type ChildrenOf = (peck: number) => FamilyPerson[];
+
 function PeckBadge({ peck }: { peck: number }) {
   return (
     <span className="text-[10px] text-gray-300 font-mono select-none" title={`Pecking order #${peck}`}>
@@ -85,7 +83,7 @@ function Gen4List({ children }: { children: FamilyPerson[] }) {
   );
 }
 
-function Gen3Card({ p }: { p: FamilyPerson }) {
+function Gen3Card({ p, childrenOf }: { p: FamilyPerson; childrenOf: ChildrenOf }) {
   const kids = childrenOf(p.peck);
   const marriage = marriageInfo(p);
   return (
@@ -122,12 +120,11 @@ function Gen3Card({ p }: { p: FamilyPerson }) {
   );
 }
 
-function Gen2Card({ p }: { p: FamilyPerson }) {
+function Gen2Card({ p, childrenOf }: { p: FamilyPerson; childrenOf: ChildrenOf }) {
   const kids = childrenOf(p.peck);
   const marriage = marriageInfo(p);
   return (
     <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-      {/* Gen 2 header */}
       <div className="bg-green-50 border-b border-green-100 px-4 py-3 flex items-center gap-3">
         <div className="w-9 h-9 rounded-full bg-green-200 text-green-900 text-sm font-bold flex items-center justify-center shrink-0">
           {initials(p.name)}
@@ -154,11 +151,10 @@ function Gen2Card({ p }: { p: FamilyPerson }) {
           <span className="text-xs text-gray-400 shrink-0">{kids.length} child{kids.length !== 1 ? "ren" : ""}</span>
         )}
       </div>
-      {/* Gen 3 children */}
       {kids.length > 0 && (
         <div className="p-3 grid grid-cols-1 sm:grid-cols-2 gap-2">
           {kids.map((k) => (
-            <Gen3Card key={k.peck} p={k} />
+            <Gen3Card key={k.peck} p={k} childrenOf={childrenOf} />
           ))}
         </div>
       )}
@@ -169,9 +165,15 @@ function Gen2Card({ p }: { p: FamilyPerson }) {
 function Gen1Section({
   person,
   colorClass,
+  childrenOf,
+  isDescendantOf,
+  family,
 }: {
   person: FamilyPerson;
   colorClass: string;
+  childrenOf: ChildrenOf;
+  isDescendantOf: (peck: number, ancestorPeck: number) => boolean;
+  family: FamilyPerson[];
 }) {
   const kids = childrenOf(person.peck);
   const marriage = marriageInfo(person);
@@ -214,7 +216,7 @@ function Gen1Section({
       {kids.length > 0 && (
         <div className="mt-3 space-y-3 pl-2">
           {kids.map((k) => (
-            <Gen2Card key={k.peck} p={k} />
+            <Gen2Card key={k.peck} p={k} childrenOf={childrenOf} />
           ))}
         </div>
       )}
@@ -226,27 +228,41 @@ function Gen1Section({
   );
 }
 
-// ── Descendant check ─────────────────────────────────────────────────────────
-
-const parentMap = new Map(family.map((p) => [p.peck, p.parentPeck]));
-
-function isDescendantOf(peck: number, ancestorPeck: number): boolean {
-  let current: number | undefined = peck;
-  while (current !== undefined) {
-    const parent = parentMap.get(current);
-    if (parent === ancestorPeck) return true;
-    current = parent;
-  }
-  return false;
-}
-
-// ── Stats ─────────────────────────────────────────────────────────────────────
-
-const genCounts = [0, 1, 2, 3, 4].map((g) => family.filter((p) => p.gen === g).length);
-
 // ── Page ──────────────────────────────────────────────────────────────────────
 
-export default function FamilyTreePage() {
+export default async function FamilyTreePage() {
+  const family = await fetchFamily();
+
+  // Build parent→children index
+  const childrenMap = new Map<number, FamilyPerson[]>();
+  for (const p of family) {
+    if (p.parentPeck) {
+      if (!childrenMap.has(p.parentPeck)) childrenMap.set(p.parentPeck, []);
+      childrenMap.get(p.parentPeck)!.push(p);
+    }
+  }
+  childrenMap.forEach((kids) => {
+    kids.sort((a: FamilyPerson, b: FamilyPerson) => (a.born ?? 9999) - (b.born ?? 9999));
+  });
+
+  function childrenOf(peck: number): FamilyPerson[] {
+    return childrenMap.get(peck) ?? [];
+  }
+
+  // Build peck→parentPeck map for descendant checks
+  const parentMap = new Map(family.map((p) => [p.peck, p.parentPeck]));
+
+  function isDescendantOf(peck: number, ancestorPeck: number): boolean {
+    let current: number | undefined = peck;
+    while (current !== undefined) {
+      const parent = parentMap.get(current);
+      if (parent === ancestorPeck) return true;
+      current = parent;
+    }
+    return false;
+  }
+
+  const genCounts = [0, 1, 2, 3, 4].map((g) => family.filter((p) => p.gen === g).length);
   const gen0 = family.filter((p) => p.gen === 0).sort((a, b) => a.peck - b.peck);
   const gen1 = family.filter((p) => p.gen === 1).sort((a, b) => (a.born ?? 0) - (b.born ?? 0));
 
@@ -264,11 +280,11 @@ export default function FamilyTreePage() {
       {/* Stats bar */}
       <div className="grid grid-cols-5 gap-2 mb-10">
         {[
-          { label: "Roots", count: genCounts[0], color: "bg-amber-50 border-amber-200 text-amber-800" },
-          { label: "Gen 1", count: genCounts[1], color: "bg-blue-50 border-blue-200 text-blue-800" },
-          { label: "Gen 2", count: genCounts[2], color: "bg-green-50 border-green-200 text-green-800" },
-          { label: "Gen 3", count: genCounts[3], color: "bg-purple-50 border-purple-200 text-purple-800" },
-          { label: "Gen 4", count: genCounts[4], color: "bg-orange-50 border-orange-200 text-orange-800" },
+          { label: "Roots",  count: genCounts[0], color: "bg-amber-50 border-amber-200 text-amber-800" },
+          { label: "Gen 1",  count: genCounts[1], color: "bg-blue-50 border-blue-200 text-blue-800" },
+          { label: "Gen 2",  count: genCounts[2], color: "bg-green-50 border-green-200 text-green-800" },
+          { label: "Gen 3",  count: genCounts[3], color: "bg-purple-50 border-purple-200 text-purple-800" },
+          { label: "Gen 4",  count: genCounts[4], color: "bg-orange-50 border-orange-200 text-orange-800" },
         ].map(({ label, count, color }) => (
           <div key={label} className={`border rounded-xl p-3 text-center ${color}`}>
             <p className="text-2xl font-bold">{count}</p>
@@ -301,7 +317,7 @@ export default function FamilyTreePage() {
         </div>
       </section>
 
-      {/* ── connector ── */}
+      {/* connector */}
       <div className="flex justify-center mb-6">
         <div className="w-px h-8 bg-gray-300" />
       </div>
@@ -312,7 +328,14 @@ export default function FamilyTreePage() {
           Generation 1 — Children of Tom &amp; Peggy
         </p>
         {gen1.map((p, i) => (
-          <Gen1Section key={p.peck} person={p} colorClass={GEN1_COLORS[i % GEN1_COLORS.length]} />
+          <Gen1Section
+            key={p.peck}
+            person={p}
+            colorClass={GEN1_COLORS[i % GEN1_COLORS.length]}
+            childrenOf={childrenOf}
+            isDescendantOf={isDescendantOf}
+            family={family}
+          />
         ))}
       </section>
 
