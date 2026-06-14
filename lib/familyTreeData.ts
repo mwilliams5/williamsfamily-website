@@ -197,4 +197,30 @@ export const family: FamilyPerson[] = [
   // ── Gen 4 — Under Racheal Adams (56) ─────────────────────────────────────
   { peck:132,name:"Jocelyn Mari Redette Adams",                 gen:4, born:2013, parentPeck:56 },
   { peck:139,name:"Mason Jeffrey Adams",                        gen:4, born:2016, parentPeck:56 },
+
+  // ── Gen 4 — Under Brian Williams (51) ────────────────────────────────────
+  { peck:144,name:"Palmer Williams",                            gen:4, born:2018, parentPeck:51 },
+  { peck:151,name:"Whittaker Williams",                         gen:4, born:2022, parentPeck:51 },
+  { peck:155,name:"Wells Williams",                             gen:4, born:2023, parentPeck:51 },
+
+  // ── Gen 4 — Under Erica Williams (61) ────────────────────────────────────
+  { peck:148,name:"Knox Norman Pewtress",                       gen:4, born:2021, parentPeck:61 },
+
+  // ── Gen 4 — Under Tindal McLaurin (62) ───────────────────────────────────
+  { peck:159,name:"Asher Alexander Yard",                       gen:4,            parentPeck:62 },
+
+  // ── Gen 4 — Under Allison McLaurin (64) ──────────────────────────────────
+  { peck:149,name:"Whaley Pauley",                              gen:4, born:2021, parentPeck:64 },
+
+  // ── Gen 4 — Under Autumn Williams Perry (73) ─────────────────────────────
+  { peck:162,name:"Kennedy Corrine Lesslie Perry",              gen:4, born:2026, parentPeck:73 },
+
+  // ── Gen 4 — Under Jakob Williams (75) ────────────────────────────────────
+  { peck:163,name:"Dawson Lane Williams",                       gen:4, born:2026, parentPeck:75 },
+
+  // ── Gen 4 — Under Alexandria Williams / Alli (76) ────────────────────────
+  { peck:156,name:"Margret Wrenn Gough",     nick:"Margo",      gen:4, born:2023, parentPeck:76 },
+
+  // ── Gen 4 — Under Courtney Cox (86) ──────────────────────────────────────
+  { peck:160,name:"Danielle Claire Mota",    nick:"Ellie",      gen:4, born:2025, parentPeck:86 },
 ];
