@@ -121,6 +121,19 @@ export default async function Reunion2026Page() {
         )}
       </section>
 
+      {/* Countdown / message */}
+      <section className="bg-primary-50 border border-primary-200 rounded-2xl p-8 md:p-10 text-center mb-12">
+        <h2 className="text-2xl font-serif font-bold text-primary-800 mb-3">
+          We Can&apos;t Wait to See You!
+        </h2>
+        <p className="text-gray-600 max-w-xl mx-auto leading-relaxed">
+          The Williams Family Reunion is always a highlight of the year — great
+          food, great stories, and even better company. Mark your calendar for
+          <strong> July 17, 2026</strong> in Rock Hill, SC and start making
+          travel plans!
+        </p>
+      </section>
+
       {/* Photo from last reunion */}
       <section className="mb-14">
         <h2 className="text-xl font-serif font-bold text-primary-800 mb-4">
@@ -138,19 +151,6 @@ export default async function Reunion2026Page() {
             All of Us! — Williams Family Reunion 2001
           </p>
         </div>
-      </section>
-
-      {/* Countdown / message */}
-      <section className="bg-primary-50 border border-primary-200 rounded-2xl p-8 md:p-10 text-center mb-12">
-        <h2 className="text-2xl font-serif font-bold text-primary-800 mb-3">
-          We Can&apos;t Wait to See You!
-        </h2>
-        <p className="text-gray-600 max-w-xl mx-auto leading-relaxed">
-          The Williams Family Reunion is always a highlight of the year — great
-          food, great stories, and even better company. Mark your calendar for
-          <strong> July 17, 2026</strong> in Rock Hill, SC and start making
-          travel plans!
-        </p>
       </section>
 
       {/* Hidden calendar link */}
