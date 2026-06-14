@@ -75,25 +75,6 @@ export default async function Reunion2026Page() {
         ))}
       </section>
 
-      {/* Photo from last reunion */}
-      <section className="mb-14">
-        <h2 className="text-xl font-serif font-bold text-primary-800 mb-4">
-          A Look Back — Reunion 2001
-        </h2>
-        <div className="rounded-2xl overflow-hidden shadow-md">
-          <Image
-            src="/photos/reunion-group.jpg"
-            alt="Williams Family Reunion 2001 group photo"
-            width={900}
-            height={500}
-            className="w-full object-cover"
-          />
-          <p className="text-sm italic text-gray-500 text-center py-3 bg-white">
-            All of Us! — Williams Family Reunion 2001
-          </p>
-        </div>
-      </section>
-
       {/* Who's Coming */}
       <section className="mb-14">
         <div className="flex items-baseline justify-between mb-5">
@@ -138,6 +119,25 @@ export default async function Reunion2026Page() {
             </div>
           </div>
         )}
+      </section>
+
+      {/* Photo from last reunion */}
+      <section className="mb-14">
+        <h2 className="text-xl font-serif font-bold text-primary-800 mb-4">
+          A Look Back — Reunion 2001
+        </h2>
+        <div className="rounded-2xl overflow-hidden shadow-md">
+          <Image
+            src="/photos/reunion-group.jpg"
+            alt="Williams Family Reunion 2001 group photo"
+            width={900}
+            height={500}
+            className="w-full object-cover"
+          />
+          <p className="text-sm italic text-gray-500 text-center py-3 bg-white">
+            All of Us! — Williams Family Reunion 2001
+          </p>
+        </div>
       </section>
 
       {/* Countdown / message */}
