@@ -67,8 +67,8 @@ const reunionUpdates = [
     year: "2001",
     title: "Reunion 2001 – A Great Success!",
     body: "The Williams Family Reunion 2001 was a huge success with outstanding attendance from family members scattered across the United States. We enjoyed great food (including the now-legendary Peach Cobbler), wonderful company, and memories to last a lifetime. A heartfelt thank-you letter was written by Grandma Peggy to all who attended.",
-    link: null,
-    linkLabel: null,
+    link: "/reunion-2001/thank-you",
+    linkLabel: "Read Grandma Peggy's Letter →",
   },
 ];
 
