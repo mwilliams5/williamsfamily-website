@@ -74,13 +74,10 @@ export default function HomePage() {
             The Williams Family
           </h1>
         </div>
-        <p className="text-xl md:text-2xl text-primary-100 max-w-2xl mx-auto mb-8">
+        <p className="text-xl md:text-2xl text-primary-100 max-w-2xl mx-auto">
           Family is everything. Welcome to our corner of the internet — a place
           to share, remember, and stay connected.
         </p>
-        <Link href="/reunion-2026" className="btn-primary bg-warm-500 hover:bg-warm-600 text-gray-900 font-semibold">
-          📸 View Reunion 2026 Photos
-        </Link>
       </section>
 
       {/* Reunion 2026 Recap */}
