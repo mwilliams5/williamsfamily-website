@@ -1,6 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { cookbook } from "@/lib/cookbookData";
+
+// Flatten all recipes with their section info
+const allRecipes = cookbook.flatMap((section) =>
+  section.recipes.map((recipe) => ({
+    ...recipe,
+    category: section.category,
+    emoji: section.emoji,
+  }))
+);
+
+// Pick recipe by ISO week number — rotates every Monday automatically
+function getWeekNumber(date: Date): number {
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  return Math.ceil(((d.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
+}
+
+const weekIndex = (new Date().getFullYear() * 53 + getWeekNumber(new Date())) % allRecipes.length;
+const featuredRecipe = allRecipes[weekIndex];
 
 export const metadata: Metadata = {
   title: "Home",
@@ -157,6 +178,45 @@ export default function HomePage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* Featured Recipe of the Week */}
+      <section className="max-w-3xl mx-auto px-4 pb-16">
+        <div className="bg-white border border-warm-200 rounded-2xl shadow-sm overflow-hidden">
+          <div className="bg-warm-500 px-6 py-3 flex items-center gap-2">
+            <span className="text-lg">{featuredRecipe.emoji}</span>
+            <p className="text-xs font-bold uppercase tracking-widest text-gray-900">Recipe of the Week</p>
+          </div>
+          <div className="p-6">
+            <p className="text-xs font-semibold uppercase tracking-widest text-warm-600 mb-1">
+              {featuredRecipe.category}
+            </p>
+            <h3 className="text-2xl font-serif font-bold text-primary-900 mb-3">
+              {featuredRecipe.name}
+            </h3>
+            {featuredRecipe.note && (
+              <p className="text-sm text-gray-500 italic mb-3">{featuredRecipe.note}</p>
+            )}
+            <p className="text-sm text-gray-600 mb-1 font-medium">A few ingredients:</p>
+            <ul className="text-sm text-gray-500 mb-5 space-y-0.5">
+              {featuredRecipe.ingredients.slice(0, 3).map((ing) => (
+                <li key={ing} className="flex items-start gap-1.5">
+                  <span className="text-warm-400 mt-0.5">·</span>
+                  <span>{ing}</span>
+                </li>
+              ))}
+              {featuredRecipe.ingredients.length > 3 && (
+                <li className="text-gray-400 italic">…and {featuredRecipe.ingredients.length - 3} more</li>
+              )}
+            </ul>
+            <Link
+              href="/cookbook"
+              className="inline-flex items-center gap-1.5 bg-primary-800 hover:bg-primary-900 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors"
+            >
+              Get the Recipe →
+            </Link>
+          </div>
         </div>
       </section>
 
