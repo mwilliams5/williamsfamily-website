@@ -44,8 +44,8 @@ const highlights = [
 
 const byTheNumbers = [
   { stat: "847", label: "Photos taken", note: "est. 12 where everyone's eyes are open" },
-  { stat: "5", label: "Generations in one place", note: "simultaneously, which is basically a miracle" },
-  { stat: "0", label: "Dishes that went home with leftovers", note: "not a crumb survived" },
+  { stat: "4", label: "Generations in one place", note: "simultaneously, which is basically a miracle" },
+  { stat: "∞", label: "Leftovers sent home", note: "we cooked for 300, there were 80 of us" },
   { stat: "2031", label: "Next reunion", note: "already dreading it (lovingly)" },
 ];
 
