@@ -47,7 +47,7 @@ export default function ReunionsPage() {
             <div className="grid md:grid-cols-[280px_1fr]">
               <div className="relative h-48 md:h-full bg-gray-100">
                 <Image
-                  src="/photos/reunion-2026/2026RamboReunion-7008-Copy1.jpg"
+                  src="/photos/reunion-2026/2026RamboReunion-9696.jpg"
                   alt="Williams Family Reunion 2026"
                   fill
                   className="object-cover"

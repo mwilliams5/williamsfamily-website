@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 };
 
 const photos = [
+  "2026RamboReunion-9696.jpg",
   "2026RamboReunion-7008-Copy1.jpg",
   "2026RamboReunion-7050-Copy1.jpg",
   "2026RamboReunion-7073-Copy1.jpg",
@@ -57,7 +58,6 @@ const photos = [
   "2026RamboReunion-9504-Copy1.jpg",
   "2026RamboReunion-9538.jpg",
   "2026RamboReunion-9594.jpg",
-  "2026RamboReunion-9696.jpg",
 ];
 
 export default function Reunion2026Page() {
