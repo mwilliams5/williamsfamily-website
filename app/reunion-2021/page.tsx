@@ -89,7 +89,7 @@ export default function Reunion2021Page() {
           href="/reunion-2026"
           className="inline-flex items-center gap-2 border border-primary-300 hover:border-primary-500 text-primary-700 hover:text-primary-900 font-semibold px-6 py-3 rounded-xl transition-all text-sm hover:bg-primary-50"
         >
-          🎉 Reunion 2026 Info
+          📸 Reunion 2026 Photos
         </Link>
       </div>
     </div>

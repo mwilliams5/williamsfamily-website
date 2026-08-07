@@ -36,6 +36,13 @@ const birthAnnouncements = [
 
 const reunionUpdates = [
   {
+    year: "2026",
+    title: "Reunion 2026 — What a Time!",
+    body: "The Williams Family Reunion 2026 was a wonderful success! Family came from near and far to gather in Rock Hill, SC on July 17th. It was so great seeing everyone together. Photos are up — check them out!",
+    link: "/reunion-2026",
+    linkLabel: "View Photos →",
+  },
+  {
     year: "2021",
     title: "Reunion 2021 – Back Together Again!",
     body: "After years apart, the Williams family reunited in July 2021 for a wonderful gathering full of laughter, memories, and good food. Browse the photo gallery to relive the fun.",

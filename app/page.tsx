@@ -49,7 +49,7 @@ export default function HomePage() {
           to share, remember, and stay connected.
         </p>
         <Link href="/reunion-2026" className="btn-primary bg-warm-500 hover:bg-warm-600 text-gray-900 font-semibold">
-          🎉 Reunion 2026 Info
+          📸 View Reunion 2026 Photos
         </Link>
       </section>
 
@@ -57,7 +57,7 @@ export default function HomePage() {
       <section className="bg-primary-900 text-white py-10 px-4">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-primary-300 mb-1">Save the Date</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-primary-300 mb-1">What a Time!</p>
             <h2 className="text-2xl md:text-3xl font-serif font-bold">Williams Family Reunion 2026</h2>
             <p className="text-primary-200 mt-1">July 17, 2026 &nbsp;·&nbsp; Rock Hill, SC</p>
             <p className="text-primary-300 mt-2 italic text-sm">&ldquo;We&apos;re in this together... because we don&apos;t have a choice&rdquo;</p>
@@ -104,7 +104,7 @@ export default function HomePage() {
             href="/reunion-2026"
             className="inline-block bg-warm-500 hover:bg-warm-600 text-gray-900 font-bold px-6 py-3 rounded-lg transition-colors"
           >
-            Reunion Details →
+            📸 View Photos →
           </Link>
         </div>
       </section>
@@ -166,6 +166,11 @@ export default function HomePage() {
         <div className="section-divider"></div>
         <div className="space-y-6">
           {[
+            {
+              date: "July 2026",
+              title: "Reunion 2026 — What a Time!",
+              body: "The Williams Family Reunion 2026 was a wonderful success! It was so great seeing everyone in Rock Hill. Photos are up — check them out!",
+            },
             {
               date: "March 2026",
               title: "Website Relaunched!",

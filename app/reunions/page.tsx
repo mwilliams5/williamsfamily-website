@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import CountdownTimer from "@/components/CountdownTimer";
 
 export const metadata: Metadata = {
   title: "Family Reunions — Williams Family",
-  description: "Williams Family Reunions — past gatherings and the upcoming 2026 reunion in Rock Hill, SC.",
+  description: "Williams Family Reunions — past gatherings and memories.",
 };
 
 export default function ReunionsPage() {
@@ -23,41 +22,15 @@ export default function ReunionsPage() {
         <div className="section-divider"></div>
       </div>
 
-      {/* ── UPCOMING REUNION ─────────────────────────────────── */}
+      {/* ── NEXT REUNION ─────────────────────────────────── */}
       <section className="mb-16">
         <h2 className="text-xs font-bold uppercase tracking-widest text-warm-600 mb-5">
-          Upcoming
+          Next Up
         </h2>
-
-        <div className="bg-primary-900 rounded-2xl overflow-hidden shadow-xl text-white">
-          {/* Banner */}
-          <div className="px-8 pt-8 pb-4 text-center">
-            <p className="text-primary-300 text-sm font-semibold uppercase tracking-widest mb-1">
-              Save the Date
-            </p>
-            <h3 className="text-3xl md:text-4xl font-serif font-bold mb-1">
-              Reunion 2026
-            </h3>
-            <p className="text-primary-200 text-lg">
-              Friday, July 17, 2026 &nbsp;·&nbsp; Rock Hill, SC
-            </p>
-            <p className="text-primary-300 mt-2 italic text-sm">&ldquo;We&apos;re in this together... because we don&apos;t have a choice&rdquo;</p>
-          </div>
-
-          {/* Countdown */}
-          <div className="px-8 pb-8 pt-2">
-            <CountdownTimer />
-          </div>
-
-          {/* CTA */}
-          <div className="bg-primary-800 px-8 py-5 text-center">
-            <Link
-              href="/reunion-2026"
-              className="inline-flex items-center gap-2 bg-warm-500 hover:bg-warm-600 text-gray-900 font-bold px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition-all text-sm"
-            >
-              🎉 View Full Reunion Details
-            </Link>
-          </div>
+        <div className="bg-primary-900 rounded-2xl p-8 text-white text-center">
+          <p className="text-4xl mb-3">🎉</p>
+          <h3 className="text-2xl font-serif font-bold mb-2">Reunion 2031</h3>
+          <p className="text-primary-300 text-sm">Details coming soon — stay tuned!</p>
         </div>
       </section>
 
@@ -68,6 +41,42 @@ export default function ReunionsPage() {
         </h2>
 
         <div className="space-y-6">
+
+          {/* ── 2026 ── */}
+          <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-primary-300 transition-all">
+            <div className="grid md:grid-cols-[280px_1fr]">
+              <div className="relative h-48 md:h-full bg-gray-100">
+                <Image
+                  src="/photos/reunion-2026/2026RamboReunion-7008-Copy1.jpg"
+                  alt="Williams Family Reunion 2026"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6 flex flex-col justify-between">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-widest text-primary-400 mb-1">
+                    2026
+                  </p>
+                  <h3 className="text-2xl font-serif font-bold text-primary-800 mb-2">
+                    Williams Family Reunion 2026
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    A wonderful gathering in Rock Hill, SC on July 17, 2026. Browse
+                    the photos and see who came out to celebrate together.
+                  </p>
+                </div>
+                <div className="mt-5">
+                  <Link
+                    href="/reunion-2026"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-primary-700 hover:text-primary-900 border border-primary-200 hover:border-primary-400 px-4 py-2 rounded-lg transition-all hover:bg-primary-50"
+                  >
+                    📸 View Photos
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
 
           {/* ── 2021 ── */}
           <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-primary-300 transition-all">
@@ -238,7 +247,7 @@ export default function ReunionsPage() {
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed">
                     A great success! Everyone made it out and had a wonderful time.
-                    Grandma Peggy's thank-you letter and reunion memories are in
+                    Grandma Peggy&apos;s thank-you letter and reunion memories are in
                     the family updates archive.
                   </p>
                 </div>
@@ -256,7 +265,6 @@ export default function ReunionsPage() {
 
         </div>
 
-        {/* Future placeholder note */}
         <p className="text-center text-xs text-gray-400 mt-8 italic">
           More reunions will be added as photos are gathered.
         </p>
