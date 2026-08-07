@@ -42,6 +42,21 @@ const highlights = [
   },
 ];
 
+const byTheNumbers = [
+  { stat: "847", label: "Photos taken", note: "est. 12 where everyone's eyes are open" },
+  { stat: "5", label: "Generations in one place", note: "simultaneously, which is basically a miracle" },
+  { stat: "0", label: "Dishes that went home with leftovers", note: "not a crumb survived" },
+  { stat: "2031", label: "Next reunion", note: "already dreading it (lovingly)" },
+];
+
+const agreements = [
+  "The food was incredible",
+  "Someone arrived late",
+  "Someone left early",
+  "We need to do this more often",
+  "Nobody can agree on who should host next time",
+];
+
 export default function HomePage() {
   return (
     <>
@@ -104,16 +119,48 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* By the Numbers */}
+      <section className="bg-primary-50 py-12 px-4">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-center text-xs font-bold uppercase tracking-widest text-primary-400 mb-6">Reunion 2026 — By the Numbers</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {byTheNumbers.map((item) => (
+              <div key={item.stat} className="bg-white rounded-2xl p-5 text-center shadow-sm border border-primary-100">
+                <p className="text-4xl font-bold font-serif text-primary-800 mb-1">{item.stat}</p>
+                <p className="text-sm font-semibold text-gray-700 mb-1">{item.label}</p>
+                <p className="text-xs text-gray-400 italic">{item.note}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Welcome message */}
       <section className="max-w-3xl mx-auto px-4 py-16 text-center">
         <h2 className="section-heading">Welcome!</h2>
         <div className="section-divider mx-auto"></div>
         <p className="text-lg text-gray-600 leading-relaxed">
-          This website is a place for the Williams family to stay connected,
-          share memories, and keep up with each other&apos;s lives. Whether
-          you&apos;re looking back at old reunions or just catching up, you&apos;ll
-          find everything here. We hope you feel right at home.
+          This is the official Williams Family website — a place to share memories,
+          browse recipes, and pretend we all keep in touch regularly.
+          We don&apos;t. But we&apos;re working on it.
         </p>
+      </section>
+
+      {/* Things We Can All Agree On */}
+      <section className="max-w-xl mx-auto px-4 pb-16">
+        <div className="bg-warm-50 border border-warm-200 rounded-2xl p-7">
+          <h3 className="text-sm font-bold uppercase tracking-widest text-warm-700 mb-4 text-center">
+            Things We Can All Agree On
+          </h3>
+          <ul className="space-y-2.5">
+            {agreements.map((item) => (
+              <li key={item} className="flex items-start gap-2.5 text-gray-700">
+                <span className="text-green-500 font-bold mt-0.5 shrink-0">✅</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       {/* Highlights grid */}
@@ -170,6 +217,19 @@ export default function HomePage() {
               <p className="text-gray-600">{post.body}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Family Disclaimer */}
+      <section className="max-w-3xl mx-auto px-4 pb-16">
+        <div className="border border-dashed border-gray-300 rounded-2xl p-6 text-center">
+          <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">⚠️ Important Notice</p>
+          <p className="text-sm text-gray-500 italic leading-relaxed">
+            This website may cause sudden urges to call your cousin, intense nostalgia
+            for Grandma Peggy&apos;s stories, and strong opinions about who should host
+            the next reunion. Side effects include uncontrollable laughter at old
+            photos and an inexplicable craving for peach cobbler.
+          </p>
         </div>
       </section>
     </>
