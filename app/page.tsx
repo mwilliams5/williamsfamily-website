@@ -71,35 +71,6 @@ export default function HomePage() {
             ]}
           />
 
-          {/* West Coast sub-countdown */}
-          <div className="border-t border-white/10 pt-5 mt-1">
-            <CountdownTimer
-              targetDate="2026-07-11T15:00:00-04:00"
-              label="West Coast Williams Incoming"
-              expiredMessage="🌊 The West Coast Williams Have Arrived!"
-              phases={[
-                { after: "2026-07-18T00:00:00-04:00", message: "🏖️ The West Coast Williams Have Headed to the Beach" },
-                { after: "2026-07-26T00:00:00-04:00", message: "✈️ The West Coast Williams Have Headed Home" },
-              ]}
-              small
-            />
-          </div>
-
-          {/* McDevitt Family sub-countdown */}
-          <div className="border-t border-white/10 pt-5 mt-1">
-            <CountdownTimer
-              targetDate="2026-07-08T17:00:00-04:00"
-              label="McDevitt Family on Their Way!"
-              expiredMessage="🚗 The McDevitt Family Is On Their Way!"
-              phases={[
-                { after: "2026-07-09T00:00:00-04:00", message: "🎉 The McDevitt Family Has Arrived!" },
-                { after: "2026-07-18T00:00:00-04:00", message: "🏖️ The McDevitt Family Has Headed to the Beach" },
-                { after: "2026-07-26T00:00:00-04:00", message: "✈️ The McDevitt Family Has Headed Home" },
-              ]}
-              small
-            />
-          </div>
-
           <Link
             href="/reunion-2026"
             className="inline-block bg-warm-500 hover:bg-warm-600 text-gray-900 font-bold px-6 py-3 rounded-lg transition-colors"

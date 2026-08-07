@@ -2,14 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PhotoGallery from "@/components/PhotoGallery";
-import { supabase } from "@/lib/supabase";
 
 export const metadata: Metadata = {
   title: "Reunion 2026 — Williams Family",
   description: "Photos and memories from the Williams Family Reunion 2026 in Rock Hill, SC.",
 };
-
-export const revalidate = 3600;
 
 const photos = [
   "2026RamboReunion-7008-Copy1.jpg",
@@ -63,24 +60,7 @@ const photos = [
   "2026RamboReunion-9696.jpg",
 ];
 
-interface PublicRSVP {
-  id: string;
-  name: string;
-  attending_count: number;
-  bringing_dish: string | null;
-  notes: string | null;
-}
-
-export default async function Reunion2026Page() {
-  const { data: rsvps } = await supabase
-    .from("rsvps")
-    .select("id, name, attending_count, bringing_dish, notes")
-    .eq("approved", true)
-    .order("created_at", { ascending: true });
-
-  const approvedRsvps: PublicRSVP[] = rsvps ?? [];
-  const totalGuests = approvedRsvps.reduce((sum, r) => sum + r.attending_count, 0);
-
+export default function Reunion2026Page() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-16">
 
@@ -141,40 +121,6 @@ export default async function Reunion2026Page() {
         />
       </section>
 
-      {/* Who Came */}
-      {approvedRsvps.length > 0 && (
-        <section className="mb-14">
-          <div className="flex items-baseline justify-between mb-5">
-            <h2 className="text-xl font-serif font-bold text-primary-800">Who Came</h2>
-            <span className="text-sm text-gray-500">
-              {approvedRsvps.length} {approvedRsvps.length === 1 ? "family" : "families"} · {totalGuests} guests
-            </span>
-          </div>
-          <div className="space-y-3">
-            {approvedRsvps.map((r) => (
-              <div key={r.id} className="bg-white border border-gray-200 rounded-xl px-5 py-4 shadow-sm flex items-start gap-4">
-                <div className="w-9 h-9 rounded-full bg-primary-100 text-primary-700 font-bold text-sm flex items-center justify-center shrink-0">
-                  {r.name.trim()[0].toUpperCase()}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <p className="font-semibold text-primary-800">{r.name}</p>
-                    <span className="text-xs bg-primary-50 text-primary-600 font-semibold px-2 py-0.5 rounded-full">
-                      {r.attending_count} {r.attending_count === 1 ? "guest" : "guests"}
-                    </span>
-                  </div>
-                  {r.bringing_dish && (
-                    <p className="text-sm text-warm-700 mt-0.5">🍽 {r.bringing_dish}</p>
-                  )}
-                  {r.notes && (
-                    <p className="text-sm text-gray-500 italic mt-0.5">&ldquo;{r.notes}&rdquo;</p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
 
       {/* Footer links */}
       <div className="border-t border-gray-200 pt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
