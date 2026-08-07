@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import CountdownTimer from "@/components/CountdownTimer";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -24,6 +23,22 @@ const highlights = [
       "Browse photos from family gatherings, milestones, vacations, and everyday moments.",
     href: "/gallery",
     linkText: "View Photos",
+  },
+  {
+    icon: "🌳",
+    title: "Family Tree",
+    description:
+      "Five generations rooted in Thomas & Peggy Williams — explore who we are and where we came from.",
+    href: "/family-tree",
+    linkText: "View Family Tree",
+  },
+  {
+    icon: "🏡",
+    title: "Reunions",
+    description:
+      "Relive the memories from past reunions and look ahead to the next time we all get together.",
+    href: "/reunions",
+    linkText: "View Reunions",
   },
 ];
 
@@ -53,30 +68,39 @@ export default function HomePage() {
         </Link>
       </section>
 
-      {/* Reunion 2026 Banner with Countdown */}
+      {/* Reunion 2026 Recap */}
       <section className="bg-primary-900 text-white py-10 px-4">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-primary-300 mb-1">What a Time!</p>
-            <h2 className="text-2xl md:text-3xl font-serif font-bold">Williams Family Reunion 2026</h2>
-            <p className="text-primary-200 mt-1">July 17, 2026 &nbsp;·&nbsp; Rock Hill, SC</p>
-            <p className="text-primary-300 mt-2 italic text-sm">&ldquo;We&apos;re in this together... because we don&apos;t have a choice&rdquo;</p>
+        <div className="max-w-4xl mx-auto">
+          <div className="rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative">
+              <Image
+                src="/photos/reunion-2026/2026RamboReunion-9696.jpg"
+                alt="Williams Family Reunion 2026 — All of us!"
+                width={1200}
+                height={600}
+                className="w-full object-cover max-h-[420px]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-center">
+                <p className="text-xs font-bold uppercase tracking-widest text-white/70 mb-1">July 17, 2026 · Rock Hill, SC</p>
+                <h2 className="text-2xl md:text-3xl font-serif font-bold text-white mb-1">
+                  Williams Family Reunion 2026
+                </h2>
+                <p className="text-white/80 italic text-sm mb-4">
+                  &ldquo;We&apos;re in this together... because we don&apos;t have a choice&rdquo;
+                </p>
+                <Link
+                  href="/reunion-2026"
+                  className="inline-block bg-warm-500 hover:bg-warm-600 text-gray-900 font-bold px-6 py-3 rounded-lg transition-colors text-sm"
+                >
+                  📸 See All Photos →
+                </Link>
+              </div>
+            </div>
           </div>
-          <CountdownTimer
-            phases={[
-              {
-                after: "2026-07-18T11:00:00-04:00",
-                message: "🎉 What a wonderful reunion! It was so great seeing everyone — we'll see you all again in 2031!",
-              },
-            ]}
-          />
-
-          <Link
-            href="/reunion-2026"
-            className="inline-block bg-warm-500 hover:bg-warm-600 text-gray-900 font-bold px-6 py-3 rounded-lg transition-colors"
-          >
-            📸 View Photos →
-          </Link>
+          <p className="text-center text-primary-300 text-sm mt-4">
+            🎉 What a wonderful reunion! We&apos;ll see everyone again in 2031!
+          </p>
         </div>
       </section>
 
@@ -87,26 +111,9 @@ export default function HomePage() {
         <p className="text-lg text-gray-600 leading-relaxed">
           This website is a place for the Williams family to stay connected,
           share memories, and keep up with each other&apos;s lives. Whether
-          you&apos;re planning the next reunion or just catching up, you&apos;ll
+          you&apos;re looking back at old reunions or just catching up, you&apos;ll
           find everything here. We hope you feel right at home.
         </p>
-      </section>
-
-      {/* Family photo */}
-      <section className="max-w-4xl mx-auto px-4 pb-10">
-        <div className="rounded-2xl overflow-hidden shadow-lg">
-          <Image
-            src="/photos/reunion-group.jpg"
-            alt="The Williams Family at the Reunion"
-            width={900}
-            height={500}
-            className="w-full object-cover"
-            priority
-          />
-          <p className="text-center text-sm text-gray-500 italic py-3 bg-white">
-            All of Us! — Williams Family Reunion 2001
-          </p>
-        </div>
       </section>
 
       {/* Highlights grid */}
@@ -114,14 +121,14 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <h2 className="section-heading text-center">Explore</h2>
           <div className="section-divider mx-auto mb-10"></div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {highlights.map((item) => (
-              <div key={item.href} className="card p-8 text-center flex flex-col items-center">
+              <div key={item.href} className="card p-6 text-center flex flex-col items-center">
                 <span className="text-5xl mb-4">{item.icon}</span>
-                <h3 className="text-xl font-serif font-bold text-primary-800 mb-3">
+                <h3 className="text-lg font-serif font-bold text-primary-800 mb-2">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 mb-6 flex-1">{item.description}</p>
+                <p className="text-gray-600 mb-5 flex-1 text-sm">{item.description}</p>
                 <Link href={item.href} className="btn-primary text-sm">
                   {item.linkText}
                 </Link>
